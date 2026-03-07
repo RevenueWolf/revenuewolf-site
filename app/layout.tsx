@@ -26,6 +26,10 @@ export const metadata: Metadata = {
     description:
       "Full-service marketing and sales support without the full-service price tag.",
   },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
