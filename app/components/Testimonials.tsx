@@ -76,15 +76,15 @@ export default function Testimonials() {
           </svg>
 
           <blockquote className="mb-8 min-h-[160px]">
-            <p className="text-lg leading-relaxed text-gray-700 md:text-xl md:leading-relaxed">
+            <p className="text-lg leading-relaxed text-body md:text-xl md:leading-relaxed">
               &ldquo;{testimonials[current].quote}&rdquo;
             </p>
           </blockquote>
 
           <div className="mb-8">
-            <p className="text-base font-semibold text-gray-900">{testimonials[current].name}</p>
+            <p className="text-base font-semibold text-dark">{testimonials[current].name}</p>
             {testimonials[current].title && (
-              <p className="text-sm text-gray-500">{testimonials[current].title}</p>
+              <p className="text-sm text-muted">{testimonials[current].title}</p>
             )}
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Testimonials() {
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={prev}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-colors hover:border-red hover:text-red"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-red hover:text-red"
           aria-label="Previous testimonial"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -108,7 +108,7 @@ export default function Testimonials() {
               key={idx}
               onClick={() => setCurrent(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                idx === current ? "w-6 bg-red" : "w-2 bg-gray-300 hover:bg-gray-400"
+                idx === current ? "w-6 bg-red" : "w-2 bg-border hover:bg-muted"
               }`}
               aria-label={`Go to testimonial ${idx + 1}`}
             />
@@ -117,7 +117,7 @@ export default function Testimonials() {
 
         <button
           onClick={next}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-colors hover:border-red hover:text-red"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-red hover:text-red"
           aria-label="Next testimonial"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

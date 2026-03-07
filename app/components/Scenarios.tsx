@@ -74,7 +74,7 @@ export default function Scenarios() {
             className={`rounded-2xl border transition-all duration-300 ${
               isOpen
                 ? "border-red/20 bg-white shadow-lg"
-                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm"
+                : "border-border bg-white hover:border-muted/30 hover:shadow-sm"
             }`}
           >
             <button
@@ -82,10 +82,10 @@ export default function Scenarios() {
               className="flex w-full items-center justify-between px-6 py-5 text-left md:px-8 md:py-6"
             >
               <div className="flex items-center gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red/10 text-sm font-bold text-red">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red/10 font-heading text-sm text-red">
                   {scenario.id}
                 </span>
-                <span className="text-lg font-semibold text-gray-900 md:text-xl">
+                <span className="font-heading text-lg text-dark md:text-xl">
                   {scenario.title}
                 </span>
               </div>
@@ -109,26 +109,26 @@ export default function Scenarios() {
             >
               <div className="overflow-hidden">
                 <div className="px-6 pb-6 md:px-8 md:pb-8">
-                  <p className="mb-6 text-base leading-relaxed text-gray-600 md:text-lg">
+                  <p className="mb-6 text-base leading-relaxed text-body md:text-lg">
                     {scenario.description}
                   </p>
 
                   <div className="mb-6 rounded-xl bg-warm-bg p-5">
-                    <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-red">
+                    <p className="mb-1 font-body text-xs font-semibold uppercase tracking-wider text-red">
                       We become
                     </p>
-                    <p className="text-lg font-semibold text-gray-900">{scenario.weBecome}</p>
+                    <p className="font-heading text-lg text-dark">{scenario.weBecome}</p>
                   </div>
 
                   <div className="mb-6">
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">
+                    <p className="mb-3 font-body text-sm font-semibold uppercase tracking-wider text-muted">
                       What that looks like
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {scenario.includes.map((item) => (
                         <span
                           key={item}
-                          className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+                          className="rounded-full bg-warm-bg px-4 py-2 font-body text-sm font-medium text-body"
                         >
                           {item}
                         </span>
@@ -151,7 +151,7 @@ export default function Scenarios() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
-                  <p className="mt-3 text-sm text-gray-500">
+                  <p className="mt-3 text-sm text-muted">
                     Free 30-minute conversation. No pitch, just clarity.
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export default function Scenarios() {
       })}
 
       <div className="mt-8 text-center">
-        <p className="text-lg text-gray-600">
+        <p className="text-lg text-body">
           Not sure which fits?{" "}
           <a href="#contact" className="font-semibold text-red hover:text-red-dark">
             That&apos;s fine — just reach out

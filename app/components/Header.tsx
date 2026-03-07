@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "What We Do", href: "#what-we-do" },
@@ -29,24 +30,38 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="font-serif text-2xl font-bold tracking-tight text-gray-900">
-          Revenue<span className="text-red">Wolf</span>
+        <a href="#" className="flex items-center gap-2.5">
+          <Image
+            src="/wolfhead.png"
+            alt=""
+            width={32}
+            height={32}
+            className="invert"
+          />
+          <Image
+            src="/logo-primary.png"
+            alt="RevenueWolf"
+            width={180}
+            height={26}
+            className="h-6 w-auto"
+            priority
+          />
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-red"
+              className="font-body text-sm font-medium text-muted transition-colors hover:text-red"
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-full bg-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-red-dark"
+            className="rounded-full bg-red px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-red-dark"
           >
             Start a conversation
           </a>
@@ -55,21 +70,21 @@ export default function Header() {
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex flex-col gap-1.5 md:hidden"
+          className="flex flex-col gap-1.5 lg:hidden"
           aria-label="Toggle menu"
         >
           <span
-            className={`block h-0.5 w-6 bg-gray-900 transition-all duration-300 ${
+            className={`block h-0.5 w-6 bg-dark transition-all duration-300 ${
               menuOpen ? "translate-y-2 rotate-45" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 bg-gray-900 transition-all duration-300 ${
+            className={`block h-0.5 w-6 bg-dark transition-all duration-300 ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 bg-gray-900 transition-all duration-300 ${
+            className={`block h-0.5 w-6 bg-dark transition-all duration-300 ${
               menuOpen ? "-translate-y-2 -rotate-45" : ""
             }`}
           />
@@ -78,14 +93,14 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="border-t border-gray-100 bg-white px-6 py-6 md:hidden">
+        <div className="border-t border-border bg-white px-6 py-6 lg:hidden">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-base font-medium text-gray-700 transition-colors hover:text-red"
+                className="font-body text-base font-medium text-body transition-colors hover:text-red"
               >
                 {link.label}
               </a>
@@ -93,7 +108,7 @@ export default function Header() {
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 rounded-full bg-red px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-red-dark"
+              className="mt-2 rounded-full bg-red px-5 py-3 text-center font-body text-sm font-semibold text-white transition-colors hover:bg-red-dark"
             >
               Start a conversation
             </a>

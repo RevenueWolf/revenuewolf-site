@@ -44,7 +44,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-body">
           Name
         </label>
         <input
@@ -52,13 +52,13 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
-          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-red focus:ring-1 focus:ring-red"
+          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-base text-dark outline-none transition-colors placeholder:text-muted focus:border-red focus:ring-1 focus:ring-red"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-body">
           Email
         </label>
         <input
@@ -66,26 +66,26 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
-          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-red focus:ring-1 focus:ring-red"
+          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-base text-dark outline-none transition-colors placeholder:text-muted focus:border-red focus:ring-1 focus:ring-red"
           placeholder="you@company.com"
         />
       </div>
 
       <div>
-        <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-body">
           Company
         </label>
         <input
           type="text"
           id="company"
           name="company"
-          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-red focus:ring-1 focus:ring-red"
+          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-base text-dark outline-none transition-colors placeholder:text-muted focus:border-red focus:ring-1 focus:ring-red"
           placeholder="Your company"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700">
+        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-body">
           Message
         </label>
         <textarea
@@ -93,7 +93,7 @@ export default function ContactForm() {
           name="message"
           rows={4}
           required
-          className="w-full resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-base text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-red focus:ring-1 focus:ring-red"
+          className="w-full resize-none rounded-xl border border-border bg-white px-4 py-3 text-base text-dark outline-none transition-colors placeholder:text-muted focus:border-red focus:ring-1 focus:ring-red"
           placeholder="Tell us a little about what you're looking for..."
         />
       </div>

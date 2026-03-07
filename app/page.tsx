@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "./components/Header";
 import Scenarios from "./components/Scenarios";
 import Testimonials from "./components/Testimonials";
@@ -96,25 +97,36 @@ export default function Home() {
       <Header />
 
       {/* ===== SECTION 1: HERO ===== */}
-      <section className="relative overflow-hidden bg-white px-6 pt-32 pb-20 md:pt-44 md:pb-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-red-light)_0%,_transparent_50%)] opacity-40" />
+      <section className="relative overflow-hidden bg-warm-bg px-6 pt-32 pb-20 md:pt-44 md:pb-32">
+        {/* Wolfhead background watermark */}
+        <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 opacity-[0.06]">
+          <Image
+            src="/wolfhead.png"
+            alt=""
+            width={700}
+            height={700}
+            className="invert"
+            priority
+          />
+        </div>
+
         <div className="relative mx-auto max-w-4xl">
-          <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight text-gray-900 md:text-6xl md:leading-[1.1]">
+          <h1 className="font-heading text-4xl leading-tight tracking-tight text-dark md:text-6xl md:leading-[1.1]">
             Full-service marketing and sales support —{" "}
             <span className="text-red">without the full-service price tag.</span>
           </h1>
 
-          <p className="mt-6 font-serif text-xl text-gray-500 md:text-2xl">
+          <p className="mt-6 font-heading text-xl text-muted md:text-2xl">
             From first touch to lifetime value.
           </p>
 
-          <div className="mt-8 max-w-2xl space-y-4 text-lg leading-relaxed text-gray-600 md:text-xl md:leading-relaxed">
+          <div className="mt-8 max-w-2xl space-y-4 font-body text-lg leading-relaxed text-body md:text-xl md:leading-relaxed">
             <p>
               Brand. Digital presence. Lead generation. Sales execution. Customer expansion. And
               the automation that ties it all together.
             </p>
             <p>That means real work getting done:</p>
-            <p className="font-medium text-gray-800">
+            <p className="font-medium text-dark">
               Websites built. Content written. Social media managed. Campaigns launched. Leads
               generated. Sales teams equipped. Automation implemented.
             </p>
@@ -125,7 +137,7 @@ export default function Home() {
           <div className="mt-10">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-red px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-red-dark hover:shadow-lg"
+              className="group inline-flex items-center gap-2 rounded-full bg-red px-8 py-4 font-body text-lg font-semibold text-white transition-all hover:bg-red-dark hover:shadow-lg"
             >
               Start a conversation
               <svg
@@ -143,12 +155,17 @@ export default function Home() {
       </section>
 
       {/* ===== SECTION 2: THE PROBLEM ===== */}
-      <section className="bg-gray-900 px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-3xl">
-          <p className="mb-6 font-serif text-sm font-semibold uppercase tracking-widest text-red">
+      <section className="relative overflow-hidden bg-dark px-6 py-20 md:py-28">
+        {/* Subtle wolfhead */}
+        <div className="pointer-events-none absolute bottom-0 left-0 -translate-x-1/3 translate-y-1/4 opacity-[0.03]">
+          <Image src="/wolfhead-white.png" alt="" width={500} height={500} />
+        </div>
+
+        <div className="relative mx-auto max-w-3xl">
+          <p className="mb-6 font-body text-sm font-semibold uppercase tracking-widest text-red">
             Sound familiar?
           </p>
-          <div className="space-y-6 text-lg leading-relaxed text-gray-300 md:text-xl md:leading-relaxed">
+          <div className="space-y-6 font-body text-lg leading-relaxed text-gray-400 md:text-xl md:leading-relaxed">
             <p>
               Your marketing says one thing. Your sales team says another. Your CRM is half-empty.
               Your agency sends reports nobody reads. Your website hasn&apos;t been updated in two
@@ -158,7 +175,7 @@ export default function Home() {
               Meanwhile, your competitors are showing up in places you&apos;re not — and your best
               customers found you by accident.
             </p>
-            <p className="text-xl font-medium text-white md:text-2xl">
+            <p className="font-heading text-xl text-white md:text-2xl">
               You don&apos;t need more tools. You don&apos;t need another agency that disappears
               after the kickoff call. You need a partner who sees the whole picture and actually
               does the work.
@@ -171,10 +188,10 @@ export default function Home() {
       <section id="what-we-do" className="bg-warm-bg px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 max-w-2xl">
-            <h2 className="font-serif text-3xl font-bold text-gray-900 md:text-5xl">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
               What we do
             </h2>
-            <p className="mt-4 text-lg text-gray-600 md:text-xl">
+            <p className="mt-4 font-body text-lg text-muted md:text-xl">
               Everything your marketing and sales operation needs — connected, coherent, and built
               to drive revenue.
             </p>
@@ -184,13 +201,13 @@ export default function Home() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="rounded-2xl border border-gray-200/60 bg-white p-8 transition-all hover:shadow-md"
+                className="rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-md"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-red/10 text-red">
                   {service.icon}
                 </div>
-                <h3 className="mb-3 text-xl font-semibold text-gray-900">{service.title}</h3>
-                <p className="text-base leading-relaxed text-gray-600">{service.description}</p>
+                <h3 className="mb-3 font-heading text-xl text-dark">{service.title}</h3>
+                <p className="font-body text-base leading-relaxed text-body">{service.description}</p>
               </div>
             ))}
           </div>
@@ -201,10 +218,10 @@ export default function Home() {
       <section id="how-we-work" className="bg-white px-6 py-20 md:py-28">
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
-            <h2 className="font-serif text-3xl font-bold text-gray-900 md:text-5xl">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
               How we work with you
             </h2>
-            <p className="mt-4 text-lg text-gray-600 md:text-xl">
+            <p className="mt-4 font-body text-lg text-muted md:text-xl">
               Every company is different. Your growth plan should be too.
             </p>
           </div>
@@ -213,61 +230,66 @@ export default function Home() {
       </section>
 
       {/* ===== SECTION 5: WHY THIS WORKS ===== */}
-      <section id="why-this-works" className="bg-gray-900 px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-4xl">
+      <section id="why-this-works" className="relative overflow-hidden bg-dark px-6 py-20 md:py-28">
+        {/* Subtle wolfhead */}
+        <div className="pointer-events-none absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 opacity-[0.03]">
+          <Image src="/wolfhead-white.png" alt="" width={600} height={600} />
+        </div>
+
+        <div className="relative mx-auto max-w-4xl">
           <div className="mb-12">
-            <h2 className="font-serif text-3xl font-bold text-white md:text-5xl">
+            <h2 className="font-heading text-3xl text-white md:text-5xl">
               Why this works
             </h2>
-            <p className="mt-4 text-lg text-gray-400 md:text-xl">
+            <p className="mt-4 font-body text-lg text-gray-500 md:text-xl">
               You&apos;re wondering how one partner does all of this. Here&apos;s the honest
               answer.
             </p>
           </div>
 
-          <div className="mb-12 max-w-3xl space-y-4 text-lg leading-relaxed text-gray-300">
+          <div className="mb-12 max-w-3xl space-y-4 font-body text-lg leading-relaxed text-gray-400">
             <p>
               The traditional model is broken. You either hire a big agency that charges big fees,
               assigns you a junior account manager, and sends you dashboards you never read. Or you
               piece together freelancers who don&apos;t talk to each other. Or you hire in-house and
               hope one person can somehow do the work of five.
             </p>
-            <p className="text-xl font-medium text-white">We built RevenueWolf differently.</p>
+            <p className="font-heading text-xl text-white md:text-2xl">We built RevenueWolf differently.</p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 text-lg font-semibold text-white">
+              <h3 className="mb-3 font-heading text-lg text-white">
                 Senior strategy, not junior handoffs.
               </h3>
-              <p className="text-base leading-relaxed text-gray-400">
+              <p className="font-body text-base leading-relaxed text-gray-500">
                 You work directly with a senior strategist who knows your business — not an account
                 coordinator reading from a playbook.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 text-lg font-semibold text-white">AI-powered execution.</h3>
-              <p className="text-base leading-relaxed text-gray-400">
+              <h3 className="mb-3 font-heading text-lg text-white">AI-powered execution.</h3>
+              <p className="font-body text-base leading-relaxed text-gray-500">
                 AI has fundamentally changed what a lean team can deliver. We use it across content,
                 research, automation, and reporting — not to replace thinking, but to move faster
                 and smarter than a team twice our size.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 text-lg font-semibold text-white">
+              <h3 className="mb-3 font-heading text-lg text-white">
                 A curated network of specialists.
               </h3>
-              <p className="text-base leading-relaxed text-gray-400">
+              <p className="font-body text-base leading-relaxed text-gray-500">
                 When your project needs a designer, a developer, or a copywriter, we bring in the
                 right person from our network. You get the expertise without the overhead. We manage
                 them. You never have to.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 text-lg font-semibold text-white">
+              <h3 className="mb-3 font-heading text-lg text-white">
                 Built to lift your team, not replace them.
               </h3>
-              <p className="text-base leading-relaxed text-gray-400">
+              <p className="font-body text-base leading-relaxed text-gray-500">
                 If you have people, we make them better. Better tools, better processes, better
                 strategy to work from. We&apos;re not here to take anyone&apos;s job. We&apos;re
                 here to make everyone&apos;s job easier.
@@ -280,25 +302,25 @@ export default function Home() {
       {/* ===== SECTION 6: ABOUT ===== */}
       <section id="about" className="bg-warm-bg px-6 py-20 md:py-28">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-4 font-serif text-sm font-semibold uppercase tracking-widest text-red">
+          <p className="mb-4 font-body text-sm font-semibold uppercase tracking-widest text-red">
             Meet the wolf behind the pack
           </p>
           <div className="grid items-start gap-12 md:grid-cols-[300px_1fr]">
             <div className="relative mx-auto w-64 md:mx-0 md:w-full">
               <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-gray-200">
                 {/* Placeholder for Chris's photo */}
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-gray-400">
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-muted">
                   <svg className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                   </svg>
                 </div>
               </div>
-              <div className="absolute -right-3 -bottom-3 rounded-xl bg-red px-4 py-2 text-sm font-semibold text-white shadow-lg">
+              <div className="absolute -right-3 -bottom-3 rounded-xl bg-red px-4 py-2 font-body text-sm font-semibold text-white shadow-lg">
                 Birmingham, AL
               </div>
             </div>
 
-            <div className="space-y-4 text-lg leading-relaxed text-gray-600">
+            <div className="space-y-4 font-body text-lg leading-relaxed text-body">
               <p>
                 Chris Cleland is the founder and strategic lead at RevenueWolf. With deep roots in
                 B2B sales and marketing, he&apos;s spent his career at the intersection of
@@ -329,7 +351,7 @@ export default function Home() {
       <section className="bg-white px-6 py-20 md:py-28">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="font-serif text-3xl font-bold text-gray-900 md:text-5xl">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
               What our clients say
             </h2>
           </div>
@@ -341,10 +363,10 @@ export default function Home() {
       <section id="field-notes" className="bg-warm-bg px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12">
-            <h2 className="font-serif text-3xl font-bold text-gray-900 md:text-5xl">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
               Field Notes
             </h2>
-            <p className="mt-4 text-lg text-gray-600 md:text-xl">
+            <p className="mt-4 font-body text-lg text-muted md:text-xl">
               Ideas, insights, and honest takes on marketing, sales, and growth in B2B.
             </p>
           </div>
@@ -353,13 +375,13 @@ export default function Home() {
             {blogPosts.map((post) => (
               <article
                 key={post.slug}
-                className="group rounded-2xl border border-gray-200/60 bg-white p-8 transition-all hover:shadow-md"
+                className="group rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-md"
               >
-                <p className="mb-3 text-sm font-medium text-gray-400">{post.date}</p>
-                <h3 className="mb-3 text-xl font-semibold text-gray-900 transition-colors group-hover:text-red">
+                <p className="mb-3 font-body text-sm font-medium text-muted">{post.date}</p>
+                <h3 className="mb-3 font-heading text-xl text-dark transition-colors group-hover:text-red">
                   {post.title}
                 </h3>
-                <p className="text-base leading-relaxed text-gray-600">{post.excerpt}</p>
+                <p className="font-body text-base leading-relaxed text-body">{post.excerpt}</p>
               </article>
             ))}
           </div>
@@ -370,10 +392,10 @@ export default function Home() {
       <section id="contact" className="bg-white px-6 py-20 md:py-28">
         <div className="mx-auto max-w-5xl">
           <div className="mb-16 text-center">
-            <h2 className="font-serif text-3xl font-bold text-gray-900 md:text-5xl">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
               Let&apos;s figure out what&apos;s possible.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 md:text-xl">
+            <p className="mx-auto mt-4 max-w-2xl font-body text-lg text-muted md:text-xl">
               Whether you&apos;re starting from scratch or ready to level up what you have, it
               starts with a conversation. No pitch. No pressure. Just clarity.
             </p>
@@ -381,16 +403,16 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-2">
             {/* Book a call */}
-            <div className="rounded-2xl border border-gray-200 bg-warm-bg p-8 md:p-10">
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">Book a discovery call</h3>
-              <p className="mb-6 text-base text-gray-600">
+            <div className="rounded-2xl border border-border bg-warm-bg p-8 md:p-10">
+              <h3 className="mb-2 font-heading text-xl text-dark">Book a discovery call</h3>
+              <p className="mb-6 font-body text-base text-body">
                 Free 30-minute conversation. No pitch, just clarity.
               </p>
               <a
                 href="https://calendly.com/chris-revenuewolf/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-red px-8 py-4 text-base font-semibold text-white transition-all hover:bg-red-dark hover:shadow-lg"
+                className="group inline-flex items-center gap-2 rounded-full bg-red px-8 py-4 font-body text-base font-semibold text-white transition-all hover:bg-red-dark hover:shadow-lg"
               >
                 Schedule on Calendly
                 <svg
@@ -406,9 +428,9 @@ export default function Home() {
             </div>
 
             {/* Contact form */}
-            <div className="rounded-2xl border border-gray-200 bg-white p-8 md:p-10">
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">Send us a message</h3>
-              <p className="mb-6 text-base text-gray-600">
+            <div className="rounded-2xl border border-border bg-white p-8 md:p-10">
+              <h3 className="mb-2 font-heading text-xl text-dark">Send us a message</h3>
+              <p className="mb-6 font-body text-base text-body">
                 Tell us a little about your situation and we&apos;ll be in touch.
               </p>
               <ContactForm />
@@ -418,16 +440,26 @@ export default function Home() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="border-t border-gray-100 bg-gray-900 px-6 py-12">
+      <footer className="border-t border-white/10 bg-dark px-6 py-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-2">
-            <span className="font-serif text-xl font-bold text-white">
-              Revenue<span className="text-red">Wolf</span>
-            </span>
-            <span className="text-sm text-gray-500">LLC</span>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/wolfhead-white.png"
+              alt=""
+              width={28}
+              height={28}
+            />
+            <Image
+              src="/logo-white.png"
+              alt="RevenueWolf"
+              width={160}
+              height={24}
+              className="h-5 w-auto"
+            />
+            <span className="font-body text-sm text-gray-600">LLC</span>
           </div>
 
-          <p className="text-sm text-gray-500">Birmingham, Alabama</p>
+          <p className="font-body text-sm text-gray-600">Birmingham, Alabama</p>
 
           <div className="flex items-center gap-4">
             {/* LinkedIn */}
@@ -435,7 +467,7 @@ export default function Home() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-400 transition-colors hover:border-red hover:text-red"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-500 transition-colors hover:border-red hover:text-red"
               aria-label="LinkedIn"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -446,7 +478,7 @@ export default function Home() {
             {/* Email */}
             <a
               href="mailto:chris@revenuewolf.com"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-400 transition-colors hover:border-red hover:text-red"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-500 transition-colors hover:border-red hover:text-red"
               aria-label="Email"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
