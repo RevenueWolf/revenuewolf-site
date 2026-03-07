@@ -308,12 +308,13 @@ export default function Home() {
           <div className="grid items-start gap-12 md:grid-cols-[300px_1fr]">
             <div className="relative mx-auto w-64 md:mx-0 md:w-full">
               <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-gray-200">
-                {/* Placeholder for Chris's photo */}
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 text-muted">
-                  <svg className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>
-                </div>
+                <Image
+                  src="/chris-cleland.png"
+                  alt="Chris Cleland, founder of RevenueWolf"
+                  width={600}
+                  height={800}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="absolute -right-3 -bottom-3 rounded-xl bg-red px-4 py-2 font-body text-sm font-semibold text-white shadow-lg">
                 Birmingham, AL
