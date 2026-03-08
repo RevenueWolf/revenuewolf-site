@@ -4,6 +4,7 @@ import Scenarios from "./components/Scenarios";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import GTMFramework from "./components/GTMFramework";
+import HeroDashboard from "./components/HeroDashboard";
 
 const services = [
   {
@@ -155,37 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SECTION 2: THE PROBLEM ===== */}
-      <section className="relative overflow-hidden bg-dark px-6 py-20 md:py-28">
-        {/* Subtle wolfhead */}
-        <div className="pointer-events-none absolute bottom-0 left-0 -translate-x-1/3 translate-y-1/4 opacity-[0.03]">
-          <Image src="/wolfhead-white.png" alt="" width={500} height={500} />
-        </div>
-
-        <div className="relative mx-auto max-w-3xl">
-          <p className="mb-6 font-body text-sm font-semibold uppercase tracking-widest text-red">
-            Sound familiar?
-          </p>
-          <div className="space-y-6 font-body text-lg leading-relaxed text-gray-400 md:text-xl md:leading-relaxed">
-            <p>
-              Your marketing says one thing. Your sales team says another. Your CRM is half-empty.
-              Your agency sends reports nobody reads. Your website hasn&apos;t been updated in two
-              years. And every new tool you buy just creates one more thing nobody uses.
-            </p>
-            <p>
-              Meanwhile, your competitors are showing up in places you&apos;re not — and your best
-              customers found you by accident.
-            </p>
-            <p className="font-heading text-xl text-white md:text-2xl">
-              You don&apos;t need more tools. You don&apos;t need another agency that disappears
-              after the kickoff call. You need a partner who sees the whole picture and actually
-              does the work.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <GTMFramework />
+      <HeroDashboard />
 
       {/* ===== SECTION 3: WHAT WE DO ===== */}
       <section id="what-we-do" className="bg-warm-bg px-6 py-20 md:py-28">
@@ -216,6 +187,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GTMFramework />
 
       {/* ===== SECTION 4: HOW WE WORK WITH YOU ===== */}
       <section id="how-we-work" className="bg-white px-6 py-20 md:py-28">
