@@ -9,7 +9,7 @@ function Card({ label, dot, children }) {
     <div className="dash-card" style={{
       background: "#ffffff", borderRadius: 12, padding: 20,
       border: "1px solid #e8e6e2", boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-      overflow: "hidden",
+      overflow: "hidden", minHeight: 280,
       display: "flex", flexDirection: "column",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
