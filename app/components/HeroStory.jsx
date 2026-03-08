@@ -49,11 +49,9 @@ function Block({ block, phase }) {
   const y = isMess ? block.messY : block.fixY;
   const rot = isMess ? block.messRot : 0;
   const isCenter = block.id === "crm";
-
   return (
-    <div style={{
-      position: "absolute",
-      left: `${x}%`, top: `${y}%`,
+    <div className="story-block" style={{
+      position: "absolute", left: `${x}%`, top: `${y}%`,
       transform: `translate(-50%, -50%) rotate(${rot}deg)`,
       transition: "all 2s cubic-bezier(0.4, 0, 0.2, 1)",
       zIndex: isCenter && !isMess ? 5 : 2,
@@ -68,28 +66,19 @@ function Block({ block, phase }) {
         transition: "all 1.6s ease",
       }}>
         <div style={{ fontSize: isCenter && !isMess ? 28 : 24, marginBottom: 6 }}>{block.icon}</div>
-        <div style={{
-          fontFamily: mono, fontSize: isCenter && !isMess ? 12 : 10, fontWeight: 800,
-          letterSpacing: 1.5, textTransform: "uppercase", color: "#1a1a1f", marginBottom: 6,
-        }}>{block.label}</div>
-        <div style={{
-          fontFamily: mono, fontSize: 8, fontWeight: 700, letterSpacing: 0.8,
-          padding: "3px 8px", borderRadius: 10,
-          background: isMess ? "rgba(230,57,70,0.08)" : "rgba(45,147,108,0.08)",
-          color: "#fff",
-          transition: "all 1s ease 1s", whiteSpace: "nowrap",
-        }}>
+        <div style={{ fontFamily: mono, fontSize: isCenter && !isMess ? 12 : 10, fontWeight: 800, letterSpacing: 1.5, textTransform: "uppercase", color: "#1a1a1f", marginBottom: 6 }}>{block.label}</div>
+        <div style={{ fontFamily: mono, fontSize: 8, fontWeight: 700, letterSpacing: 0.8, padding: "3px 8px", borderRadius: 10, background: isMess ? "rgba(230,57,70,0.08)" : "rgba(45,147,108,0.08)", color: "#fff", transition: "all 1s ease 1s", whiteSpace: "nowrap" }}>
           {isMess ? `⚠ ${block.friction}` : `✓ ${block.fix}`}
         </div>
       </div>
       {!isMess && block.fixX === 12 && block.fixY === 25 && (
-        <div style={{ position: "absolute", top: -28, left: "50%", transform: "translateX(-50%)", fontFamily: mono, fontSize: 9, letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8a95", fontWeight: 700, whiteSpace: "nowrap", transition: "opacity 1s ease 1.5s" }}>Inputs</div>
+        <div className="col-label" style={{ position: "absolute", top: -28, left: "50%", transform: "translateX(-50%)", fontFamily: mono, fontSize: 9, letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8a95", fontWeight: 700, whiteSpace: "nowrap" }}>Inputs</div>
       )}
       {!isMess && block.id === "crm" && (
-        <div style={{ position: "absolute", top: -28, left: "50%", transform: "translateX(-50%)", fontFamily: mono, fontSize: 9, letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8a95", fontWeight: 700, whiteSpace: "nowrap", transition: "opacity 1s ease 1.5s" }}>Hub</div>
+        <div className="col-label" style={{ position: "absolute", top: -28, left: "50%", transform: "translateX(-50%)", fontFamily: mono, fontSize: 9, letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8a95", fontWeight: 700, whiteSpace: "nowrap" }}>Hub</div>
       )}
       {!isMess && block.fixX === 88 && block.fixY === 25 && (
-        <div style={{ position: "absolute", top: -28, left: "50%", transform: "translateX(-50%)", fontFamily: mono, fontSize: 9, letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8a95", fontWeight: 700, whiteSpace: "nowrap", transition: "opacity 1s ease 1.5s" }}>Outputs</div>
+        <div className="col-label" style={{ position: "absolute", top: -28, left: "50%", transform: "translateX(-50%)", fontFamily: mono, fontSize: 9, letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8a95", fontWeight: 700, whiteSpace: "nowrap" }}>Outputs</div>
       )}
     </div>
   );
@@ -98,19 +87,13 @@ function Block({ block, phase }) {
 function ClutterItem({ item, phase }) {
   const isMess = phase === "mess";
   return (
-    <div style={{
-      position: "absolute",
-      left: `${item.x}%`, top: `${item.y}%`,
+    <div className="clutter-item" style={{
+      position: "absolute", left: `${item.x}%`, top: `${item.y}%`,
       transform: `translate(-50%, -50%) rotate(${item.rot}deg) scale(${isMess ? 1 : 0})`,
-      opacity: isMess ? 1 : 0,
-      transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      opacity: isMess ? 1 : 0, transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
       zIndex: 1, pointerEvents: "none",
     }}>
-      <div style={{
-        background: "rgba(255,255,255,0.85)", border: "1.5px dashed #d4d2ce",
-        borderRadius: 8, padding: "8px 12px", textAlign: "center",
-        boxShadow: "0 1px 4px rgba(0,0,0,0.03)",
-      }}>
+      <div style={{ background: "rgba(255,255,255,0.85)", border: "1.5px dashed #d4d2ce", borderRadius: 8, padding: "8px 12px", textAlign: "center", boxShadow: "0 1px 4px rgba(0,0,0,0.03)" }}>
         <div style={{ fontSize: 16, marginBottom: 2 }}>{item.icon}</div>
         <div style={{ fontFamily: mono, fontSize: 7, fontWeight: 600, color: "#aaa", letterSpacing: 0.5, whiteSpace: "nowrap" }}>{item.label}</div>
       </div>
@@ -128,13 +111,9 @@ function FlowLines({ phase }) {
         </marker>
       </defs>
       {flowConnections.map((conn, i) => (
-        <line key={i}
-          x1={`${conn.from.x}%`} y1={`${conn.from.y}%`}
-          x2={`${conn.to.x}%`} y2={`${conn.to.y}%`}
-          stroke="rgba(45,147,108,0.2)" strokeWidth={2}
-          markerEnd="url(#flowArrow)"
-          style={{ opacity: isFix ? 1 : 0, transition: `opacity 0.8s ease ${1 + i * 0.12}s` }}
-        />
+        <line key={i} x1={`${conn.from.x}%`} y1={`${conn.from.y}%`} x2={`${conn.to.x}%`} y2={`${conn.to.y}%`}
+          stroke="rgba(45,147,108,0.2)" strokeWidth={2} markerEnd="url(#flowArrow)"
+          style={{ opacity: isFix ? 1 : 0, transition: `opacity 0.8s ease ${1 + i * 0.12}s` }} />
       ))}
     </svg>
   );
@@ -144,12 +123,10 @@ function PhaseLabel({ phase }) {
   const isMess = phase === "mess";
   return (
     <div style={{ position: "absolute", top: 16, left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
-      <div style={{
+      <div className="phase-label" style={{
         fontFamily: mono, fontSize: 16, fontWeight: 800, letterSpacing: 4,
         textTransform: "uppercase", padding: "12px 32px", borderRadius: 24,
-        background: isMess ? "#E63946" : "#2D936C",
-        color: "#fff",
-        border: "none",
+        background: isMess ? "#E63946" : "#2D936C", color: "#fff", border: "none",
         transition: "all 0.8s ease",
       }}>
         {isMess ? "⚡ Before RevenueWolf" : "✦ After RevenueWolf"}
@@ -160,7 +137,6 @@ function PhaseLabel({ phase }) {
 
 export default function HeroStory() {
   const [phase, setPhase] = useState("mess");
-
   useEffect(() => {
     let t1, t2;
     const cycle = () => {
@@ -177,36 +153,33 @@ export default function HeroStory() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
         * { box-sizing: border-box; } body { margin: 0; }
+        @media (max-width: 768px) {
+          .story-container { height: 320px !important; }
+          .story-inner { transform: scale(0.5); transform-origin: top left; width: 200%; height: 200%; }
+          .phase-label { font-size: 11px !important; padding: 8px 18px !important; letter-spacing: 2px !important; }
+          .story-stats { gap: 12px !important; flex-wrap: wrap !important; padding: 8px 12px !important; }
+          .story-stats > div { flex: 1 1 40% !important; }
+        }
       `}</style>
 
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        
-
-        <div style={{
+        <div className="story-container" style={{
           position: "relative", width: "100%", height: 560,
-          background: "#fff", borderRadius: 16,
-          border: "1.5px solid #e8e6e2",
-          boxShadow: "0 4px 24px rgba(0,0,0,0.04)",
-          overflow: "hidden",
+          background: "#fff", borderRadius: 16, border: "1.5px solid #e8e6e2",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.04)", overflow: "hidden",
         }}>
           <PhaseLabel phase={phase} />
-          <FlowLines phase={phase} />
+          <div className="story-inner" style={{ position: "absolute", inset: 0 }}>
+            <FlowLines phase={phase} />
+            {clutter.map((item, i) => (<ClutterItem key={i} item={item} phase={phase} />))}
+            {blocks.map((block) => (<Block key={block.id} block={block} phase={phase} />))}
+          </div>
 
-          {clutter.map((item, i) => (
-            <ClutterItem key={i} item={item} phase={phase} />
-          ))}
-
-          {blocks.map((block) => (
-            <Block key={block.id} block={block} phase={phase} />
-          ))}
-
-          <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0,
-            padding: "12px 24px",
+          <div className="story-stats" style={{
+            position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px 24px",
             background: phase === "mess" ? "rgba(230,57,70,0.02)" : "rgba(45,147,108,0.02)",
-            borderTop: "1px solid #e8e6e2",
-            display: "flex", justifyContent: "center", gap: 40,
-            transition: "all 1s ease",
+            borderTop: "1px solid #e8e6e2", display: "flex", justifyContent: "center", gap: 40,
+            transition: "all 1s ease", flexWrap: "wrap",
           }}>
             {[
               { label: "Tools connected", mess: "2 of 7", fix: "7 of 7" },

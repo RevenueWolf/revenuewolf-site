@@ -6,10 +6,10 @@ const mono = "'JetBrains Mono', monospace";
 
 function Card({ label, dot, children }) {
   return (
-    <div style={{
+    <div className="dash-card" style={{
       background: "#ffffff", borderRadius: 12, padding: 20,
       border: "1px solid #e8e6e2", boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-      overflow: "hidden", aspectRatio: "1.15 / 1",
+      overflow: "hidden",
       display: "flex", flexDirection: "column",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
@@ -203,83 +203,6 @@ function Activity() {
   );
 }
 
-function Channels() {
-  const ch = [{ n: "Outbound Email", p: 35, c: "#E63946" }, { n: "LinkedIn", p: 24, c: "#6366f1" }, { n: "Inbound / SEO", p: 22, c: "#2D936C" }, { n: "Referrals", p: 12, c: "#FFB347" }, { n: "Events", p: 7, c: "#8a8a95" }];
-  const [filled, setFilled] = useState(false);
-  useEffect(() => { setTimeout(() => setFilled(true), 500); const t = setInterval(() => { setFilled(false); setTimeout(() => setFilled(true), 500); }, 8000); return () => clearInterval(t); }, []);
-  return (
-    <Card label="Channel Attribution" dot="#6366f1">
-      {ch.map((c) => (
-        <div key={c.n} style={{ marginBottom: 10 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-            <span style={{ fontSize: 10, fontFamily: mono, fontWeight: 600, color: "#1a1a1f" }}>{c.n}</span>
-            <span style={{ fontSize: 10, fontFamily: mono, fontWeight: 800, color: c.c }}>{c.p}%</span>
-          </div>
-          <div style={{ height: 6, background: "#f0efed", borderRadius: 3, overflow: "hidden" }}>
-            <div style={{ width: filled ? `${c.p}%` : "0%", height: "100%", background: c.c, borderRadius: 3, transition: "width 1.2s cubic-bezier(0.4,0,0.2,1)" }} />
-          </div>
-        </div>
-      ))}
-    </Card>
-  );
-}
-
-function Automations() {
-  const workflows = [
-    { name: "Quote Follow-up", runs: 142 },
-    { name: "Lead Scoring", runs: 891 },
-    { name: "New MQL Alert", runs: 67 },
-    { name: "Re-engagement", runs: 234 },
-    { name: "Onboarding Seq.", runs: 53 },
-  ];
-  const [counts, setCounts] = useState(workflows.map((w) => w.runs));
-  useEffect(() => { const t = setInterval(() => setCounts((p) => p.map((c) => c + Math.floor(Math.random() * 3 + 1))), 3000); return () => clearInterval(t); }, []);
-  return (
-    <Card label="Automations" dot="#E63946">
-      {workflows.map((w, i) => (
-        <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, paddingBottom: 10, borderBottom: i < workflows.length - 1 ? "1px solid #f0efed" : "none" }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#2D936C", animation: "pulse 2s infinite", animationDelay: `${i * 0.3}s` }} />
-          <span style={{ flex: 1, fontSize: 10, fontFamily: mono, fontWeight: 700, color: "#1a1a1f" }}>{w.name}</span>
-          <span style={{ fontSize: 9, fontFamily: mono, fontWeight: 600, color: "#8a8a95", transition: "all 0.4s" }}>{counts[i]} runs</span>
-        </div>
-      ))}
-    </Card>
-  );
-}
-
-function Team() {
-  const reps = [
-    { name: "Jordan M.", quota: 88, deals: 12 },
-    { name: "Taylor K.", quota: 72, deals: 9 },
-    { name: "Casey R.", quota: 95, deals: 15 },
-    { name: "Morgan S.", quota: 64, deals: 7 },
-  ];
-  const [quotas, setQuotas] = useState(reps.map((r) => r.quota));
-  useEffect(() => {
-    const t = setInterval(() => setQuotas((p) => p.map((q, i) => {
-      const next = q + Math.random() * 3;
-      return next > 110 ? reps[i].quota : Math.round(next * 10) / 10;
-    })), 3500);
-    return () => clearInterval(t);
-  }, []);
-  return (
-    <Card label="Team Performance" dot="#6366f1">
-      {reps.map((r, i) => (
-        <div key={i} style={{ marginBottom: 12 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-            <span style={{ fontSize: 10, fontFamily: mono, fontWeight: 700, color: "#1a1a1f" }}>{r.name}</span>
-            <span style={{ fontSize: 10, fontFamily: mono, fontWeight: 800, color: quotas[i] >= 80 ? "#2D936C" : "#FFB347" }}>{quotas[i].toFixed(0)}%</span>
-          </div>
-          <div style={{ height: 6, background: "#f0efed", borderRadius: 3, overflow: "hidden" }}>
-            <div style={{ width: `${Math.min(quotas[i], 100)}%`, height: "100%", background: quotas[i] >= 80 ? "#2D936C" : "#FFB347", borderRadius: 3, transition: "width 0.8s ease" }} />
-          </div>
-          <div style={{ fontSize: 8, fontFamily: mono, color: "#8a8a95", marginTop: 3 }}>{r.deals} deals closed</div>
-        </div>
-      ))}
-    </Card>
-  );
-}
-
 export default function HeroDashboard() {
   return (
     <section style={{ background: "#1a1a1f", width: "100%", padding: "80px 24px" }}>
@@ -287,21 +210,25 @@ export default function HeroDashboard() {
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .dash-grid { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 768px) {
+          .dash-grid { grid-template-columns: 1fr !important; }
+        }
       `}</style>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1152, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: 5, color: "#E63946", textTransform: "uppercase", marginBottom: 20, fontWeight: 700 }}>Your Revenue Engine</div>
           <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 40, fontWeight: 800, margin: "0 0 16px 0", lineHeight: 1.15, color: "#ffffff", letterSpacing: -0.5 }}>We track everything so you don&apos;t have to.</h2>
           <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 19, lineHeight: 1.6, color: "#8a8a95", maxWidth: 540, margin: "0 auto" }}>Pipeline. Leads. Sequences. Revenue. Attribution. Team performance. All running, all connected, all visible — in real time.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+        <div className="dash-grid" style={{ display: "grid", gap: 20 }}>
           <KPIs />
           <PipelineCard />
           <Enrichment />
           <Sequence />
           <Revenue />
           <Activity />
-                  </div>
+        </div>
       </div>
     </section>
   );
