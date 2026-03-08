@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Outfit } from "next/font/google";
 import "./globals.css";
+import "./gtm-framework.css";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow",

@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Scenarios from "./components/Scenarios";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
+import GTMFramework from "./components/GTMFramework";
 
 const services = [
   {
@@ -183,6 +184,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GTMFramework />
 
       {/* ===== SECTION 3: WHAT WE DO ===== */}
       <section id="what-we-do" className="bg-warm-bg px-6 py-20 md:py-28">
