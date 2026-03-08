@@ -5,6 +5,8 @@ import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import GTMFramework from "./components/GTMFramework";
 import HeroDashboard from "./components/HeroDashboard";
+import HeroStory from "./components/HeroStory";
+import HeroGeo from "./components/HeroGeo";
 
 const services = [
   {
@@ -99,47 +101,24 @@ export default function Home() {
       <Header />
 
       {/* ===== SECTION 1: HERO ===== */}
-      <section className="relative overflow-hidden bg-warm-bg px-6 pt-32 pb-20 md:pt-44 md:pb-32">
-        {/* Wolfhead background watermark */}
-        <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 opacity-[0.06]">
-          <Image
-            src="/wolfhead.png"
-            alt=""
-            width={700}
-            height={700}
-            className="invert"
-            priority
-          />
-        </div>
+      <section className="relative overflow-hidden px-6 pt-32 pb-20 md:pt-44 md:pb-32" style={{background: "#D50000"}}>
+        <HeroGeo />
+
 
         <div className="relative mx-auto max-w-4xl">
-          <h1 className="font-heading text-4xl leading-tight tracking-tight text-dark md:text-6xl md:leading-[1.1]">
-            Full-service marketing and sales support —{" "}
-            <span className="text-red">without the full-service price tag.</span>
+          <h1 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-6xl md:leading-[1.1]">
+            Your entire GTM engine —{" "}
+            <span className="text-white/90">strategy, execution, and automation.</span>
           </h1>
 
-          <p className="mt-6 font-heading text-xl text-muted md:text-2xl">
-            From first touch to lifetime value.
+          <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-white/70 md:text-xl">
+            Websites. Content. Campaigns. Pipeline. CRM. Reporting. All connected, all running, all under one roof.
           </p>
-
-          <div className="mt-8 max-w-2xl space-y-4 font-body text-lg leading-relaxed text-body md:text-xl md:leading-relaxed">
-            <p>
-              Brand. Digital presence. Lead generation. Sales execution. Customer expansion. And
-              the automation that ties it all together.
-            </p>
-            <p>That means real work getting done:</p>
-            <p className="font-medium text-dark">
-              Websites built. Content written. Social media managed. Campaigns launched. Leads
-              generated. Sales teams equipped. Automation implemented.
-            </p>
-            <p>Strategy with you. Execution beside you. Systems your team owns.</p>
-            <p>We don&apos;t just design growth. We help you make it happen.</p>
-          </div>
 
           <div className="mt-10">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-red px-8 py-4 font-body text-lg font-semibold text-white transition-all hover:bg-red-dark hover:shadow-lg"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-body text-lg font-semibold text-[#D50000] transition-all hover:bg-white/90 hover:shadow-lg"
             >
               Start a conversation
               <svg
@@ -155,6 +134,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HeroStory />
 
       <HeroDashboard />
 
