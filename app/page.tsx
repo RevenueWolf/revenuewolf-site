@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Header from "./components/Header";
 import Scenarios from "./components/Scenarios";
 import Testimonials from "./components/Testimonials";
@@ -7,6 +8,7 @@ import GTMFramework from "./components/GTMFramework";
 import HeroDashboard from "./components/HeroDashboard";
 import HeroStory from "./components/HeroStory";
 import HeroGeo from "./components/HeroGeo";
+import { fieldNotes } from "./data/fieldNotes";
 
 const services = [
   {
@@ -71,29 +73,6 @@ const services = [
   },
 ];
 
-const blogPosts = [
-  {
-    title: "Why Your Sales Team Hates Your Marketing (And How to Fix It)",
-    date: "March 2026",
-    excerpt:
-      "The disconnect between sales and marketing isn't a people problem. It's a systems problem. Here's how to close the gap without adding headcount.",
-    slug: "sales-marketing-alignment",
-  },
-  {
-    title: "The AI-Powered Marketing Stack for B2B Companies Under 50 People",
-    date: "February 2026",
-    excerpt:
-      "You don't need enterprise tools to run enterprise-grade marketing. Here's the lean stack we recommend for growing B2B companies.",
-    slug: "ai-marketing-stack",
-  },
-  {
-    title: "Stop Building Brand Awareness. Start Building Pipeline.",
-    date: "January 2026",
-    excerpt:
-      "Brand awareness is a vanity metric if it doesn't connect to revenue. Here's how to build a marketing engine that actually fills your pipeline.",
-    slug: "brand-awareness-vs-pipeline",
-  },
-];
 
 export default function Home() {
   return (
@@ -330,18 +309,28 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {blogPosts.map((post) => (
-              <article
+            {fieldNotes.slice(0, 3).map((post) => (
+              <Link
                 key={post.slug}
+                href={`/field-notes/${post.slug}`}
                 className="group rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-md"
               >
                 <p className="mb-3 font-body text-sm font-medium text-muted">{post.date}</p>
                 <h3 className="mb-3 font-heading text-xl text-dark transition-colors group-hover:text-red">
                   {post.title}
                 </h3>
-                <p className="font-body text-base leading-relaxed text-body">{post.excerpt}</p>
-              </article>
+                <p className="font-body text-base leading-relaxed text-body line-clamp-3">{post.excerpt}</p>
+              </Link>
             ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/field-notes"
+              className="font-body text-base font-semibold text-red transition-colors hover:text-red-dark"
+            >
+              View all Field Notes &rarr;
+            </Link>
           </div>
         </div>
       </section>

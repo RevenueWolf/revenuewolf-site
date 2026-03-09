@@ -8,7 +8,7 @@ const navLinks = [
   { label: "How We Work", href: "#how-we-work" },
   { label: "Why Us", href: "#why-this-works" },
   { label: "About", href: "#about" },
-  { label: "Field Notes", href: "#field-notes" },
+  { label: "Field Notes", href: "/field-notes" },
 ];
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2.5">
+        <a href="/" className="flex items-center gap-2.5">
           <Image
             src="/wolfhead.png"
             alt=""
