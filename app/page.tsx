@@ -107,7 +107,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-4xl">
           <h1 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-6xl md:leading-[1.1]">
-            Your entire GTM engine —{" "}
+            Your entire marketing engine —{" "}
             <span className="text-white/90">strategy, execution, and automation.</span>
           </h1>
 

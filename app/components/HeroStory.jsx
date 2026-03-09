@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 
-const mono = "'JetBrains Mono', monospace";
-const serif = "'Source Serif 4', Georgia, serif";
+const mono = "var(--font-outfit), sans-serif";
+const serif = "var(--font-outfit), sans-serif";
 
 const blocks = [
   { id: "marketing", label: "Marketing", icon: "📣", messX: 6, messY: 8, messRot: -6, fixX: 12, fixY: 25, friction: "No attribution", fix: "Full attribution" },
@@ -151,7 +151,7 @@ export default function HeroStory() {
   return (
     <section style={{ background: "#F8F7F5", width: "100%", padding: "80px 24px 60px" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+        
         * { box-sizing: border-box; } body { margin: 0; }
         @media (max-width: 768px) {
           .story-container { height: 320px !important; }

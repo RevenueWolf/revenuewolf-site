@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const mono = "'JetBrains Mono', monospace";
+const mono = "var(--font-outfit), sans-serif";
 
 function Card({ label, dot, children }) {
   return (
@@ -207,7 +207,7 @@ export default function HeroDashboard() {
   return (
     <section style={{ background: "#1a1a1f", width: "100%", padding: "80px 24px" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
         .dash-grid { grid-template-columns: repeat(3, 1fr); }
@@ -218,8 +218,8 @@ export default function HeroDashboard() {
       <div style={{ maxWidth: 1152, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: 5, color: "#E63946", textTransform: "uppercase", marginBottom: 20, fontWeight: 700 }}>Your Revenue Engine</div>
-          <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 40, fontWeight: 800, margin: "0 0 16px 0", lineHeight: 1.15, color: "#ffffff", letterSpacing: -0.5 }}>We track everything so you don&apos;t have to.</h2>
-          <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 19, lineHeight: 1.6, color: "#8a8a95", maxWidth: 540, margin: "0 auto" }}>Pipeline. Leads. Sequences. Revenue. Attribution. Team performance. All running, all connected, all visible — in real time.</p>
+          <h2 style={{ fontFamily: "var(--font-barlow), sans-serif", fontSize: 40, fontWeight: 800, margin: "0 0 16px 0", lineHeight: 1.15, color: "#ffffff", letterSpacing: -0.5, textTransform: "uppercase" }}>We track everything so you don&apos;t have to.</h2>
+          <p style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#8a8a95", maxWidth: 540, margin: "0 auto" }}>Pipeline. Leads. Sequences. Revenue. Attribution. Team performance. All running, all connected, all visible — in real time.</p>
         </div>
         <div className="dash-grid" style={{ display: "grid", gap: 20 }}>
           <KPIs />
