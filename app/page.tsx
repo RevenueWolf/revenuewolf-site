@@ -86,12 +86,12 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-4xl">
           <h1 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-6xl md:leading-[1.1]">
-            Your entire marketing engine —{" "}
-            <span className="text-white/90">strategy, execution, and automation.</span>
+            Your all-in-one marketing and sales enablement team —{" "}
+            <span className="text-white/90">minus the team.</span>
           </h1>
 
           <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-white/70 md:text-xl">
-            Websites. Content. Campaigns. Pipeline. CRM. Reporting. All connected, all running, all under one roof.
+            Strategy. Content. Campaigns. Pipeline. CRM. Sales enablement. One person running your entire go-to-market engine — top to bottom.
           </p>
 
           <div className="mt-10">
