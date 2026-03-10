@@ -16,22 +16,22 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "RevenueWolf | Full-Service B2B Marketing & Sales Support",
+  title: "RevenueWolf | Modern Marketing Agency — Smarter, Faster, Proven",
   description:
-    "Full-service marketing and sales support without the full-service price tag. Strategy, execution, and automation for B2B companies ready to grow.",
+    "Marketing has changed. Your agency should too. RevenueWolf is a modern marketing agency powered by AI and 20+ years of experience. We help businesses grow — and prove it with real numbers.",
   openGraph: {
-    title: "RevenueWolf | Full-Service B2B Marketing & Sales Support",
+    title: "RevenueWolf | Modern Marketing Agency — Smarter, Faster, Proven",
     description:
-      "Full-service marketing and sales support without the full-service price tag. From first touch to lifetime value.",
+      "Marketing has changed. Your agency should too. RevenueWolf is a modern marketing agency powered by AI and 20+ years of experience. We help businesses grow — and prove it with real numbers.",
     type: "website",
     locale: "en_US",
     siteName: "RevenueWolf",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RevenueWolf | Full-Service B2B Marketing & Sales Support",
+    title: "RevenueWolf | Modern Marketing Agency — Smarter, Faster, Proven",
     description:
-      "Full-service marketing and sales support without the full-service price tag.",
+      "Marketing has changed. Your agency should too. RevenueWolf is a modern marketing agency powered by AI and 20+ years of experience. We help businesses grow — and prove it with real numbers.",
   },
   icons: {
     icon: "/favicon.png",

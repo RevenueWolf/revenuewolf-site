@@ -89,7 +89,7 @@ export default function Home() {
             Marketing has changed. Your agency should too.
           </h1>
 
-          <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-white/70 md:text-xl">
+          <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-white/90 md:text-xl">
             RevenueWolf runs on AI, data, and 20+ years of knowing what actually drives revenue. No fluff. No vanity metrics. Just the marketing, automation, and strategy that gets you more customers.
           </p>
 
@@ -114,25 +114,25 @@ export default function Home() {
       </section>
 
       {/* ===== SECTION 2: THE PROBLEM ===== */}
-      <section className="bg-dark px-6 py-20 md:py-28">
+      <section className="px-6 py-20 md:py-28" style={{ background: "#F5F5F2" }}>
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-12 font-heading text-3xl text-white md:text-5xl">
-            Here&apos;s what&apos;s actually happening with your marketing right now.
+          <h2 className="mb-12 font-heading text-3xl md:text-5xl" style={{ color: "#1a1a1a" }}>
+            Does any of this sound familiar?
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             {problemPoints.map((point, i) => (
               <div
                 key={i}
-                className="rounded-xl border border-white/10 bg-white/5 px-6 py-5"
+                style={{ borderLeft: "3px solid #D50000", padding: "12px 0 12px 24px" }}
               >
-                <p className="font-body text-lg leading-relaxed text-gray-300">{point}</p>
+                <p className="font-body leading-relaxed" style={{ color: "#444444", fontSize: "1.1rem" }}>{point}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-12 font-heading text-xl text-white md:text-2xl">
-            Sounds familiar? That&apos;s exactly where RevenueWolf comes in.
+          <p className="mt-12 font-heading" style={{ color: "#1a1a1a", fontSize: "2rem", fontWeight: 700 }}>
+            If any of this rings true, you&apos;re not alone — and it&apos;s fixable. It&apos;s exactly why we built RevenueWolf.
           </p>
         </div>
       </section>
@@ -149,11 +149,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+            {services.map((service, i) => (
               <div
                 key={service.title}
-                className="rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-md"
+                className={`rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-md ${
+                  i < 3 ? "lg:col-span-2" : "lg:col-span-3"
+                } md:col-span-1`}
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-red/10 text-red">
                   {service.icon}
@@ -187,33 +189,36 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 font-heading text-lg text-white">
+              <h3 className="mb-3 font-heading text-white" style={{ fontSize: "1.5rem" }}>
                 You work with a senior marketer, not a junior account manager.
               </h3>
-              <p className="font-body text-base leading-relaxed text-gray-500">
+              <p className="font-body leading-relaxed" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.8)" }}>
                 No admin layer between you and the people actually doing the work. You get 20+ years of marketing experience — someone who&apos;s been on your side of the table and knows where the money gets wasted.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 font-heading text-lg text-white">
+              <h3 className="mb-3 font-heading text-white" style={{ fontSize: "1.5rem" }}>
                 AI isn&apos;t a buzzword here. It&apos;s how we deliver more for less.
               </h3>
-              <p className="font-body text-base leading-relaxed text-gray-500">
+              <p className="font-body leading-relaxed" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.8)" }}>
                 We use AI across content, research, automation, and reporting to move faster and deliver what used to take a full team at a fraction of the cost.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 font-heading text-lg text-white">
+              <h3 className="mb-3 font-heading text-white" style={{ fontSize: "1.5rem" }}>
                 Already have an agency? Let&apos;s make sure you&apos;re getting what you&apos;re paying for.
               </h3>
-              <p className="font-body text-base leading-relaxed text-gray-500">
+              <p className="font-body leading-relaxed" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.8)" }}>
                 If you&apos;re spending money on marketing and can&apos;t tell what&apos;s working, something&apos;s wrong. We help you figure out where your budget&apos;s actually going — and how to keep more of it while getting more out of it.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 font-heading text-lg text-white">
+              <h3 className="mb-3 font-heading text-white" style={{ fontSize: "1.5rem" }}>
                 Have a marketing team or a one-person superhero? We help support them every step of the way.
               </h3>
+              <p className="font-body leading-relaxed" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.8)" }}>
+                We&apos;re not here to replace anyone. We give your people strategy, better tools, and a system to work from — so they can stop guessing and start executing.
+              </p>
             </div>
           </div>
         </div>
@@ -276,7 +281,7 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -right-3 -bottom-3 rounded-xl bg-red px-4 py-2 font-body text-sm font-semibold text-white shadow-lg">
-                Birmingham, AL
+                Chris Cleland
               </div>
             </div>
 
@@ -303,7 +308,7 @@ export default function Home() {
               Field Notes
             </h2>
             <p className="mt-4 font-body text-lg text-muted md:text-xl">
-              Ideas, insights, and honest takes on marketing, sales, and growth in B2B.
+              Ideas, insights, and honest takes on marketing, sales, and growth.
             </p>
           </div>
 
