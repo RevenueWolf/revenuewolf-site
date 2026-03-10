@@ -4,37 +4,28 @@ import Header from "./components/Header";
 import Scenarios from "./components/Scenarios";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
-import GTMFramework from "./components/GTMFramework";
+import Quiz from "./components/Quiz";
 import HeroDashboard from "./components/HeroDashboard";
-import HeroStory from "./components/HeroStory";
 import HeroGeo from "./components/HeroGeo";
 import { fieldNotes } from "./data/fieldNotes";
 
 const services = [
   {
-    title: "Brand & Digital Presence",
+    title: "Get Found",
     description:
-      "Your identity, your story, and the digital front door that makes the first impression. Brand strategy, website design and development, and the visual identity that makes you look like the company you actually are.",
+      "Nobody can buy from you if they don't know you exist. We build your digital presence — website, SEO, content, social — so the right people find you before they find your competitors.",
+    includes: "Website design & development, SEO, social media, content strategy, brand identity",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
       </svg>
     ),
   },
   {
-    title: "Content & Social Media",
+    title: "Get Leads",
     description:
-      "The content your sales team actually wants to share and your audience actually wants to read. Blog posts, case studies, social media, email campaigns — created with your voice, not ours.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-      </svg>
-    ),
-  },
-  {
-    title: "Lead Generation & Prospecting",
-    description:
-      "Getting your name in front of the right people at the right time. Outbound prospecting, inbound campaigns, SEO, and the targeting that makes your pipeline predictable instead of accidental.",
+      "Traffic is nice. Customers are better. We build the campaigns and targeting that put real prospects in front of you — not just clicks on a dashboard.",
+    includes: "Lead generation, inbound & outbound campaigns, paid media, email marketing, audience targeting",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
@@ -42,35 +33,45 @@ const services = [
     ),
   },
   {
-    title: "Sales Support & Enablement",
+    title: "Close More",
     description:
-      "The collateral, tools, and processes that make your sales team faster and sharper. Proposals, decks, follow-up sequences, and the coaching that helps them use it all.",
+      "Getting interest is one thing. Converting it is another. We give you the tools, content, and follow-up systems that turn \"maybe\" into \"yes\" — faster and more often.",
+    includes: "Sales collateral, email sequences, follow-up automation, landing pages, conversion optimization",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
   },
   {
-    title: "CRM & Automation",
+    title: "Keep & Grow",
     description:
-      "The systems that keep it all running without burning out your people. CRM setup and optimization, workflow automation, reporting, and the integrations that make your tools actually talk to each other.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
-      </svg>
-    ),
-  },
-  {
-    title: "Customer Growth & Retention",
-    description:
-      "The sale isn't the finish line. Onboarding support, review campaigns, referral programs, cross-sell and upsell strategies — everything that turns a customer into a long-term revenue stream.",
+      "The first sale isn't the finish line. We help you keep customers longer, get them to come back, and turn them into your best source of new business.",
+    includes: "Retention campaigns, onboarding support, review & referral programs, cross-sell and upsell strategies",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
       </svg>
     ),
   },
+  {
+    title: "Run Smarter",
+    description:
+      "If your team is still doing things manually that a machine should handle, we need to talk. We set up the systems, automations, and reporting that keep everything running without burning people out.",
+    includes: "CRM setup & optimization, workflow automation, reporting & dashboards, integrations",
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+      </svg>
+    ),
+  },
+];
+
+const problemPoints = [
+  "You feel like you're paying too much — but you can't quite prove what's working and what's not.",
+  "You know the tactics that once worked are losing steam.",
+  "AI is changing the game, but you're not sure exactly how to use it for your business.",
+  "You don't have extra help for your existing team, and you know you need a full-pack approach — but you don't have a full-pack budget.",
 ];
 
 
@@ -83,15 +84,13 @@ export default function Home() {
       <section className="relative overflow-hidden px-6 pt-32 pb-20 md:pt-44 md:pb-32" style={{background: "#D50000"}}>
         <HeroGeo />
 
-
         <div className="relative mx-auto max-w-4xl">
-          <h1 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-6xl md:leading-[1.1]">
-            Your all-in-one marketing and sales enablement team —{" "}
-            <span className="text-white/90">minus the team.</span>
+          <h1 className="font-heading text-6xl leading-tight tracking-tight text-white md:text-8xl md:leading-[1.05]">
+            Marketing has changed. Your agency should too.
           </h1>
 
           <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-white/70 md:text-xl">
-            Strategy. Content. Campaigns. Pipeline. CRM. Sales enablement. One person running your entire go-to-market engine — top to bottom.
+            RevenueWolf runs on AI, data, and 20+ years of knowing what actually drives revenue. No fluff. No vanity metrics. Just the marketing, automation, and strategy that gets you more customers.
           </p>
 
           <div className="mt-10">
@@ -114,9 +113,29 @@ export default function Home() {
         </div>
       </section>
 
-      <HeroStory />
+      {/* ===== SECTION 2: THE PROBLEM ===== */}
+      <section className="bg-dark px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-12 font-heading text-3xl text-white md:text-5xl">
+            Here&apos;s what&apos;s actually happening with your marketing right now.
+          </h2>
 
-      <HeroDashboard />
+          <div className="space-y-4">
+            {problemPoints.map((point, i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-white/10 bg-white/5 px-6 py-5"
+              >
+                <p className="font-body text-lg leading-relaxed text-gray-300">{point}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-12 font-heading text-xl text-white md:text-2xl">
+            Sounds familiar? That&apos;s exactly where RevenueWolf comes in.
+          </p>
+        </div>
+      </section>
 
       {/* ===== SECTION 3: WHAT WE DO ===== */}
       <section id="what-we-do" className="bg-warm-bg px-6 py-20 md:py-28">
@@ -126,8 +145,7 @@ export default function Home() {
               What we do
             </h2>
             <p className="mt-4 font-body text-lg text-muted md:text-xl">
-              Everything your marketing and sales operation needs — connected, coherent, and built
-              to drive revenue.
+              Everything your business needs to grow — connected, coherent, and built to prove it&apos;s working.
             </p>
           </div>
 
@@ -141,33 +159,21 @@ export default function Home() {
                   {service.icon}
                 </div>
                 <h3 className="mb-3 font-heading text-xl text-dark">{service.title}</h3>
-                <p className="font-body text-base leading-relaxed text-body">{service.description}</p>
+                <p className="mb-4 font-body text-base leading-relaxed text-body">{service.description}</p>
+                <p className="font-body text-sm text-muted">
+                  <span className="font-semibold">Includes:</span> {service.includes}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <GTMFramework />
+      {/* ===== SECTION 4: WE MEASURE WHAT MATTERS ===== */}
+      <HeroDashboard />
 
-      {/* ===== SECTION 4: HOW WE WORK WITH YOU ===== */}
-      <section id="how-we-work" className="bg-white px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-12 text-center">
-            <h2 className="font-heading text-3xl text-dark md:text-5xl">
-              How we work with you
-            </h2>
-            <p className="mt-4 font-body text-lg text-muted md:text-xl">
-              Every company is different. Your growth plan should be too.
-            </p>
-          </div>
-          <Scenarios />
-        </div>
-      </section>
-
-      {/* ===== SECTION 5: WHY THIS WORKS ===== */}
-      <section id="why-this-works" className="relative overflow-hidden bg-dark px-6 py-20 md:py-28">
-        {/* Subtle wolfhead */}
+      {/* ===== SECTION 5: WHY US ===== */}
+      <section id="why-us" className="relative overflow-hidden bg-dark px-6 py-20 md:py-28">
         <div className="pointer-events-none absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 opacity-[0.03]">
           <Image src="/wolfhead-white.png" alt="" width={600} height={600} />
         </div>
@@ -175,67 +181,84 @@ export default function Home() {
         <div className="relative mx-auto max-w-4xl">
           <div className="mb-12">
             <h2 className="font-heading text-3xl text-white md:text-5xl">
-              Why this works
+              Why RevenueWolf instead of everyone else?
             </h2>
-            <p className="mt-4 font-body text-lg text-gray-500 md:text-xl">
-              You&apos;re wondering how one partner does all of this. Here&apos;s the honest
-              answer.
-            </p>
-          </div>
-
-          <div className="mb-12 max-w-3xl space-y-4 font-body text-lg leading-relaxed text-gray-400">
-            <p>
-              The traditional model is broken. You either hire a big agency that charges big fees,
-              assigns you a junior account manager, and sends you dashboards you never read. Or you
-              piece together freelancers who don&apos;t talk to each other. Or you hire in-house and
-              hope one person can somehow do the work of five.
-            </p>
-            <p className="font-heading text-xl text-white md:text-2xl">We built RevenueWolf differently.</p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
               <h3 className="mb-3 font-heading text-lg text-white">
-                Senior strategy, not junior handoffs.
+                You work with a senior marketer, not a junior account manager.
               </h3>
               <p className="font-body text-base leading-relaxed text-gray-500">
-                You work directly with a senior strategist who knows your business — not an account
-                coordinator reading from a playbook.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-              <h3 className="mb-3 font-heading text-lg text-white">AI-powered execution.</h3>
-              <p className="font-body text-base leading-relaxed text-gray-500">
-                AI has fundamentally changed what a lean team can deliver. We use it across content,
-                research, automation, and reporting — not to replace thinking, but to move faster
-                and smarter than a team twice our size.
+                No admin layer between you and the people actually doing the work. You get 20+ years of marketing experience — someone who&apos;s been on your side of the table and knows where the money gets wasted.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
               <h3 className="mb-3 font-heading text-lg text-white">
-                A curated network of specialists.
+                AI isn&apos;t a buzzword here. It&apos;s how we deliver more for less.
               </h3>
               <p className="font-body text-base leading-relaxed text-gray-500">
-                When your project needs a designer, a developer, or a copywriter, we bring in the
-                right person from our network. You get the expertise without the overhead. We manage
-                them. You never have to.
+                We use AI across content, research, automation, and reporting to move faster and deliver what used to take a full team at a fraction of the cost.
               </p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
               <h3 className="mb-3 font-heading text-lg text-white">
-                Built to lift your team, not replace them.
+                Already have an agency? Let&apos;s make sure you&apos;re getting what you&apos;re paying for.
               </h3>
               <p className="font-body text-base leading-relaxed text-gray-500">
-                If you have people, we make them better. Better tools, better processes, better
-                strategy to work from. We&apos;re not here to take anyone&apos;s job. We&apos;re
-                here to make everyone&apos;s job easier.
+                If you&apos;re spending money on marketing and can&apos;t tell what&apos;s working, something&apos;s wrong. We help you figure out where your budget&apos;s actually going — and how to keep more of it while getting more out of it.
               </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+              <h3 className="mb-3 font-heading text-lg text-white">
+                Have a marketing team or a one-person superhero? We help support them every step of the way.
+              </h3>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== SECTION 6: ABOUT ===== */}
+      {/* ===== SECTION 6: INTERACTIVE QUIZ ===== */}
+      <section className="bg-warm-bg px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-12 text-center">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
+              How much of your marketing budget is actually working?
+            </h2>
+            <p className="mt-4 font-body text-lg text-muted md:text-xl">
+              Five questions. Thirty seconds. Find out where you might be leaving money on the table.
+            </p>
+          </div>
+          <Quiz />
+        </div>
+      </section>
+
+      {/* ===== SECTION 7: WHERE YOU FIT ===== */}
+      <section id="where-you-fit" className="bg-white px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-12 text-center">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
+              Wherever you are, we meet you there.
+            </h2>
+          </div>
+          <Scenarios />
+        </div>
+      </section>
+
+      {/* ===== SECTION 8: TESTIMONIALS ===== */}
+      <section className="bg-white px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-12 text-center">
+            <h2 className="font-heading text-3xl text-dark md:text-5xl">
+              Don&apos;t take our word for it.
+            </h2>
+          </div>
+          <Testimonials />
+        </div>
+      </section>
+
+      {/* ===== SECTION 9: ABOUT ===== */}
       <section id="about" className="bg-warm-bg px-6 py-20 md:py-28">
         <div className="mx-auto max-w-4xl">
           <p className="mb-4 font-body text-sm font-semibold uppercase tracking-widest text-red">
@@ -259,45 +282,21 @@ export default function Home() {
 
             <div className="space-y-4 font-body text-lg leading-relaxed text-body">
               <p>
-                Chris Cleland is the founder and strategic lead at RevenueWolf. With deep roots in
-                B2B sales and marketing, he&apos;s spent his career at the intersection of
-                marketing strategy, sales execution, and the technology that connects them.
+                Chris Cleland has spent 20+ years in marketing — on the agency side, the corporate side, and everywhere in between. He&apos;s built sales teams, managed pipelines, launched campaigns, and sat through enough bad agency meetings to know exactly what&apos;s broken about the traditional model.
               </p>
               <p>
-                He&apos;s worked inside the companies he now serves — building sales teams, managing
-                pipelines, implementing CRMs, and watching firsthand what happens when marketing and
-                sales don&apos;t talk to each other. RevenueWolf was built to fix that.
+                RevenueWolf exists because there&apos;s a better way. Smarter tools, leaner execution, and a focus on the only metric that matters — did it grow your business?
               </p>
               <p>
-                Based in Birmingham, Alabama, Chris works with B2B companies across the country who
-                are ready to get serious about growth but aren&apos;t interested in bloated agencies
-                or empty strategies. He believes the best marketing is the kind your sales team
-                actually uses — and that the best systems are the ones your team actually owns.
-              </p>
-              <p>
-                When he&apos;s not building revenue engines, he&apos;s a dad, a strategist at heart,
-                and someone who genuinely believes AI is going to change the game for companies
-                willing to move.
+                Based in Birmingham, Alabama, working with companies across the country who are done overpaying for marketing that can&apos;t prove itself.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== SECTION 7: TESTIMONIALS ===== */}
-      <section className="bg-white px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <h2 className="font-heading text-3xl text-dark md:text-5xl">
-              What our clients say
-            </h2>
-          </div>
-          <Testimonials />
-        </div>
-      </section>
-
-      {/* ===== SECTION 8: BLOG / FIELD NOTES ===== */}
-      <section id="field-notes" className="bg-warm-bg px-6 py-20 md:py-28">
+      {/* ===== FIELD NOTES ===== */}
+      <section id="field-notes" className="bg-white px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12">
             <h2 className="font-heading text-3xl text-dark md:text-5xl">
@@ -313,7 +312,7 @@ export default function Home() {
               <Link
                 key={post.slug}
                 href={`/field-notes/${post.slug}`}
-                className="group rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-md"
+                className="group rounded-2xl border border-border bg-warm-bg p-8 transition-all hover:shadow-md"
               >
                 <p className="mb-3 font-body text-sm font-medium text-muted">{post.date}</p>
                 <h3 className="mb-3 font-heading text-xl text-dark transition-colors group-hover:text-red">
@@ -335,22 +334,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SECTION 9: FINAL CTA ===== */}
-      <section id="contact" className="bg-white px-6 py-20 md:py-28">
+      {/* ===== SECTION 10: CTA / CONTACT ===== */}
+      <section id="contact" className="bg-warm-bg px-6 py-20 md:py-28">
         <div className="mx-auto max-w-5xl">
           <div className="mb-16 text-center">
             <h2 className="font-heading text-3xl text-dark md:text-5xl">
-              Let&apos;s figure out what&apos;s possible.
+              Ready to stop guessing?
             </h2>
             <p className="mx-auto mt-4 max-w-2xl font-body text-lg text-muted md:text-xl">
-              Whether you&apos;re starting from scratch or ready to level up what you have, it
-              starts with a conversation. No pitch. No pressure. Just clarity.
+              Whether you&apos;re starting from scratch, fixing what&apos;s broken, or just need to know if your marketing is actually working — it starts with a conversation. No pitch. No pressure. Just straight talk about what&apos;s going on and what we can do about it.
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {/* Book a call */}
-            <div className="rounded-2xl border border-border bg-warm-bg p-8 md:p-10">
+            <div className="rounded-2xl border border-border bg-white p-8 md:p-10">
               <h3 className="mb-2 font-heading text-xl text-dark">Book a discovery call</h3>
               <p className="mb-6 font-body text-base text-body">
                 Free 30-minute conversation. No pitch, just clarity.

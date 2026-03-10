@@ -217,9 +217,8 @@ export default function HeroDashboard() {
       `}</style>
       <div style={{ maxWidth: 1152, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <div style={{ fontFamily: mono, fontSize: 13, letterSpacing: 5, color: "#E63946", textTransform: "uppercase", marginBottom: 20, fontWeight: 700 }}>Your Revenue Engine</div>
-          <h2 style={{ fontFamily: "var(--font-barlow), sans-serif", fontSize: 40, fontWeight: 800, margin: "0 0 16px 0", lineHeight: 1.15, color: "#ffffff", letterSpacing: -0.5, textTransform: "uppercase" }}>We track everything so you don&apos;t have to.</h2>
-          <p style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#8a8a95", maxWidth: 540, margin: "0 auto" }}>Pipeline. Leads. Sequences. Revenue. Attribution. Team performance. All running, all connected, all visible — in real time.</p>
+          <h2 style={{ fontFamily: "var(--font-barlow), sans-serif", fontSize: 40, fontWeight: 800, margin: "0 0 16px 0", lineHeight: 1.15, color: "#ffffff", letterSpacing: -0.5, textTransform: "uppercase" }}>We measure what matters.</h2>
+          <p style={{ fontFamily: "var(--font-outfit), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#8a8a95", maxWidth: 620, margin: "0 auto" }}>Vanity metrics are easy. Revenue is harder. We track pipeline, leads, conversion, and real dollars — and we make it visible to you in real time. No more guessing. No more waiting for a monthly report to find out what happened.</p>
         </div>
         <div className="dash-grid" style={{ display: "grid", gap: 20 }}>
           <KPIs />
