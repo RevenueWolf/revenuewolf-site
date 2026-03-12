@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Field Notes | RevenueWolf",
   description:
-    "Ideas, insights, and honest takes on marketing, sales, and growth in B2B.",
+    "Ideas, insights, and honest takes on marketing, sales, and growth.",
 };
 
 export default function FieldNotesPage() {

@@ -16,6 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://revenuewolf.com"),
   title: "RevenueWolf | Modern Marketing Agency — Smarter, Faster, Proven",
   description:
     "Marketing has changed. Your agency should too. RevenueWolf is a modern marketing agency powered by AI and 20+ years of experience. We help businesses grow — and prove it with real numbers.",
@@ -47,6 +48,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${barlowCondensed.variable} ${outfit.variable} font-body antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": "https://revenuewolf.com",
+              name: "RevenueWolf",
+              description:
+                "A modern marketing agency powered by AI and 20+ years of experience. We help businesses grow — and prove it with real numbers.",
+              url: "https://revenuewolf.com",
+              founder: {
+                "@type": "Person",
+                name: "Chris Cleland",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Birmingham",
+                addressRegion: "AL",
+                addressCountry: "US",
+              },
+              areaServed: "US",
+              priceRange: "$$",
+              image: "https://revenuewolf.com/opengraph-image.png",
+              sameAs: [],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>

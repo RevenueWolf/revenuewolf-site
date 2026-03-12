@@ -19,6 +19,19 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Field Notes | RevenueWolf`,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      siteName: "RevenueWolf",
+      url: `https://revenuewolf.com/field-notes/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
@@ -34,6 +47,32 @@ export default async function FieldNotePage({
   return (
     <>
       <Header />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.date,
+            author: {
+              "@type": "Person",
+              name: "Chris Cleland",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "RevenueWolf",
+              url: "https://revenuewolf.com",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://revenuewolf.com/field-notes/${slug}`,
+            },
+          }),
+        }}
+      />
 
       <article className="bg-warm-bg px-6 pt-32 pb-20 md:pt-44 md:pb-28">
         <div className="mx-auto max-w-3xl">
