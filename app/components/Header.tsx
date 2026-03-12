@@ -8,8 +8,23 @@ const navLinks = [
   { label: "Why Us", href: "#why-us" },
   { label: "Where You Fit", href: "#where-you-fit" },
   { label: "About", href: "#about" },
-  { label: "Field Notes", href: "/field-notes" },
+  { label: "Field Notes", href: "#field-notes" },
 ];
+
+function scrollToHash(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+  if (!href.startsWith("#")) return;
+  e.preventDefault();
+  // If we're not on the homepage, navigate there with the hash
+  if (window.location.pathname !== "/") {
+    window.location.href = "/" + href;
+    return;
+  }
+  const el = document.querySelector(href);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+    window.history.replaceState(null, "", href);
+  }
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,6 +69,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => scrollToHash(e, link.href)}
               className="font-body text-sm font-medium text-muted transition-colors hover:text-red"
             >
               {link.label}
@@ -61,6 +77,7 @@ export default function Header() {
           ))}
           <a
             href="#contact"
+            onClick={(e) => scrollToHash(e, "#contact")}
             className="rounded-full bg-red px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-red-dark"
           >
             Start a conversation
@@ -99,7 +116,10 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  scrollToHash(e, link.href);
+                  setMenuOpen(false);
+                }}
                 className="font-body text-base font-medium text-body transition-colors hover:text-red"
               >
                 {link.label}
@@ -107,7 +127,10 @@ export default function Header() {
             ))}
             <a
               href="#contact"
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => {
+                scrollToHash(e, "#contact");
+                setMenuOpen(false);
+              }}
               className="mt-2 rounded-full bg-red px-5 py-3 text-center font-body text-sm font-semibold text-white transition-colors hover:bg-red-dark"
             >
               Start a conversation

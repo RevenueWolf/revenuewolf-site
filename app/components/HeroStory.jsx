@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 
 const mono = "var(--font-outfit), sans-serif";
-const serif = "var(--font-outfit), sans-serif";
 
 const blocks = [
   { id: "marketing", label: "Marketing", icon: "📣", messX: 6, messY: 8, messRot: -6, fixX: 12, fixY: 25, friction: "No attribution", fix: "Full attribution" },

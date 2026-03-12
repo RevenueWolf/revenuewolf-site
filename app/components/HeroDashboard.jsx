@@ -97,7 +97,7 @@ function Enrichment() {
   useEffect(() => {
     const t = setInterval(() => setRows((v) => { if (v >= data.length) { setTimeout(() => { setRows(0); setCols(data.map(() => 0)); }, 1500); return v; } return v + 1; }), 900);
     return () => clearInterval(t);
-  }, []);
+  }, [data.length]);
   useEffect(() => {
     const t = setInterval(() => setCols((p) => { const n = [...p]; for (let i = 0; i < rows; i++) { if (n[i] < 2) { n[i]++; break; } } return n; }), 350);
     return () => clearInterval(t);
@@ -127,7 +127,7 @@ function Sequence() {
     { icon: "✓", label: "Meeting booked", detail: "Thursday 2 PM", color: "#2D936C" },
   ];
   const [step, setStep] = useState(0);
-  useEffect(() => { const t = setInterval(() => setStep((s) => (s + 1) % (steps.length + 2)), 2000); return () => clearInterval(t); }, []);
+  useEffect(() => { const t = setInterval(() => setStep((s) => (s + 1) % (steps.length + 2)), 2000); return () => clearInterval(t); }, [steps.length]);
   return (
     <Card label="Email Sequences" dot="#FFB347">
       {steps.map((e, i) => {
@@ -187,7 +187,7 @@ function Activity() {
   ];
   const times = ["Just now", "12m ago", "28m ago", "1h ago", "2h ago", "3h ago", "4h ago", "5h ago"];
   const [vis, setVis] = useState(0);
-  useEffect(() => { const t = setInterval(() => setVis((v) => v >= events.length ? 0 : v + 1), 1600); return () => clearInterval(t); }, []);
+  useEffect(() => { const t = setInterval(() => setVis((v) => v >= events.length ? 0 : v + 1), 1600); return () => clearInterval(t); }, [events.length]);
   return (
     <Card label="Live Activity" dot="#2D936C">
       {events.slice(0, Math.min(vis, 6)).map((e, i) => (

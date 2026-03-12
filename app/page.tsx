@@ -273,7 +273,7 @@ export default function Home() {
             <div className="relative mx-auto w-64 md:mx-0 md:w-full">
               <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-gray-200">
                 <Image
-                  src="/chris-cleland.png"
+                  src="/chris-cleland.jpg"
                   alt="Chris Cleland, founder of RevenueWolf"
                   width={600}
                   height={800}
@@ -414,7 +414,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/chriscleland/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-500 transition-colors hover:border-red hover:text-red"

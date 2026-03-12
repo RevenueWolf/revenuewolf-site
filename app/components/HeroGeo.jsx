@@ -2,8 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-const RED = "#D50000";
-
 function IsometricGrid({ w, h, ctx, t }) {
   const cols = 18; const rows = 14;
   const spacingX = w / (cols - 1);
