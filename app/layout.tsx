@@ -72,7 +72,7 @@ export default function RootLayout({
               areaServed: "US",
               priceRange: "$$",
               image: "https://revenuewolf.com/opengraph-image.png",
-              sameAs: [],
+              sameAs: ["https://www.linkedin.com/in/chriscleland/"],
             }),
           }}
         />
