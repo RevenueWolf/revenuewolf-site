@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     description:
       "Marketing has changed. Your agency should too. RevenueWolf is a modern marketing agency powered by AI and 20+ years of experience. We help businesses grow — and prove it with real numbers.",
   },
+  verification: {
+    google: "gnNG1Igna2cYFS6Uzo3ynTThG5ExhycezXi7vGN2xzI",
+  },
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
