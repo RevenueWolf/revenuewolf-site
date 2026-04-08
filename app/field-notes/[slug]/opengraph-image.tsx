@@ -1,6 +1,6 @@
+export const runtime = "edge";
+
 import { ImageResponse } from "next/og";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { fieldNotes, getFieldNoteBySlug } from "../../data/fieldNotes";
 
 export const alt = "RevenueWolf Field Notes";
@@ -21,11 +21,6 @@ export default async function OGImage({
   const title = post?.title ?? "Field Notes";
   const date = post?.date ?? "";
 
-  const logoData = await readFile(
-    join(process.cwd(), "public", "logo-white.png")
-  );
-  const logoBase64 = `data:image/png;base64,${logoData.toString("base64")}`;
-
   return new ImageResponse(
     (
       <div
@@ -39,7 +34,6 @@ export default async function OGImage({
           padding: "60px",
         }}
       >
-        <img src={logoBase64} alt="" height={40} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
