@@ -1,15 +1,11 @@
 export const runtime = "edge";
 
 import { ImageResponse } from "next/og";
-import { fieldNotes, getFieldNoteBySlug } from "../../data/fieldNotes";
+import { getFieldNoteBySlug } from "../../data/fieldNotes";
 
 export const alt = "RevenueWolf Field Notes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-
-export function generateStaticParams() {
-  return fieldNotes.map((post) => ({ slug: post.slug }));
-}
 
 export default async function OGImage({
   params,
