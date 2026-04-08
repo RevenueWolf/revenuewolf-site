@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion: Amazon Strategic MRO Partner</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap');
+
+  :root {
+    --red: #D50000;
+    --red-light: rgba(213,0,0,0.08);
+    --red-mid: rgba(213,0,0,0.15);
+    --blueprint: #1a2a42;
+    --blueprint-light: #2c4a6e;
+    --line: #b0bec5;
+    --line-light: #cfd8dc;
+    --line-faint: #eceff1;
+    --conveyor: #546e7a;
+    --conveyor-active: #D50000;
+    --text-dark: #1a1a1a;
+    --text-mid: #546e7a;
+    --text-light: #90a4ae;
+    --bg: #ffffff;
+    --bg-off: #f8f9fa;
+    --green: #2e7d32;
+    --amber: #e65100;
+    --zone-fill: rgba(176,190,197,0.08);
+    --zone-hover: rgba(213,0,0,0.05);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--bg); font-family: 'Outfit', sans-serif; overflow-x:hidden; }
+
+  /* HEADER */
+  .header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--line-faint);
+    background: var(--bg);
+  }
+  .header-left { display:flex; align-items:center; gap:14px; }
+  .logo-mark {
+    width:32px; height:32px; background:var(--red); border-radius:5px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .header-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:26px;
+    color:var(--text-dark); text-transform:uppercase; letter-spacing:1.5px;
+  }
+  .header-sub { font-size:14px; color:var(--text-mid); letter-spacing:0.3px; }
+  .header-badge {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:500;
+    padding:4px 10px; border-radius:3px; letter-spacing:0.8px; text-transform:uppercase;
+    background:var(--red-light); color:var(--red); border:1px solid var(--red-mid);
+  }
+
+  /* SVG CONTAINER */
+  .schematic-wrap {
+    width:100%; max-width:1200px; margin:0 auto; padding:20px;
+    position:relative;
+  }
+  .schematic-label {
+    font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--text-light);
+    letter-spacing:1.2px; text-transform:uppercase; margin-bottom:8px;
+  }
+  svg.fc-svg {
+    width:100%; height:auto; display:block;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.04));
+  }
+
+  /* HOTSPOT PLAY BUTTONS */
+  .hotspot-pin { cursor:pointer; }
+  .hotspot-pin .pin-bg {
+    animation: pulse-bg 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse-bg {
+    0%, 100% { opacity:0.25; r:20; }
+    50% { opacity:0; r:28; }
+  }
+  .hotspot-pin:hover .pin-circle { r:16; }
+  .hotspot-pin:hover .pin-play { transform:scale(1.1); }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.5); z-index:1000;
+    align-items:center; justify-content:center;
+    backdrop-filter: blur(3px);
+  }
+  .modal-overlay.active { display:flex; }
+  .modal {
+    background:#fff; border-radius:12px; width:94%; max-width:780px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+    position:relative; overflow:hidden;
+    animation: modalIn 0.25s ease-out;
+  }
+  @keyframes modalIn {
+    from { opacity:0; transform:translateY(16px) scale(0.97); }
+    to { opacity:1; transform:translateY(0) scale(1); }
+  }
+  .modal-close {
+    position:absolute; top:10px; right:10px; z-index:10;
+    width:28px; height:28px; border-radius:50%; border:none;
+    background:rgba(0,0,0,0.08); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; color:var(--text-mid); transition:background 0.2s;
+  }
+  .modal-close:hover { background:rgba(0,0,0,0.15); }
+  .modal-layout {
+    display:flex; min-height:0;
+  }
+
+  /* Left column - vertical phone video */
+  .modal-left {
+    width:260px; min-width:260px; background:#111;
+    display:flex; flex-direction:column; position:relative;
+    border-radius:12px 0 0 12px; overflow:hidden;
+  }
+  .modal-video {
+    width:100%; flex:1; aspect-ratio:9/16; background:#1a1e24;
+    position:relative; overflow:hidden; cursor:pointer;
+  }
+  .modal-video::before {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.7) 100%);
+    z-index:2;
+  }
+  .webcam-person {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center 15%; z-index:1;
+  }
+  /* LinkedIn connect button */
+  .linkedin-btn {
+    display:inline-flex; align-items:center; gap:5px;
+    padding:5px 10px; border-radius:4px;
+    background:rgba(0,119,181,0.9); color:#fff;
+    font-family:'Outfit',sans-serif; font-size:10px; font-weight:500;
+    text-decoration:none; transition: background 0.2s;
+    letter-spacing:0.3px;
+  }
+  .linkedin-btn:hover { background:rgba(0,119,181,1); }
+  /* Webcam UI overlay */
+  .webcam-time {
+    position:absolute; top:12px; right:12px; z-index:3;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; color:rgba(255,255,255,0.7);
+    background:rgba(0,0,0,0.35); padding:3px 8px; border-radius:3px;
+  }
+  .webcam-name-bar {
+    position:absolute; bottom:0; left:0; right:0; z-index:3;
+    padding:16px 14px 14px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .webcam-name-row {
+    display:flex; align-items:center; gap:8px;
+  }
+  .webcam-name {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:22px; color:#fff;
+    text-transform:uppercase; letter-spacing:0.5px;
+  }
+  .webcam-role {
+    font-family:'Outfit',sans-serif; font-size:11px; color:rgba(255,255,255,0.7);
+    margin-top:2px;
+  }
+  .webcam-bottom-row {
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .play-circle {
+    position:absolute; bottom:100px; left:50%; transform:translateX(-50%);
+    width:56px; height:56px; border-radius:50%; background:rgba(213,0,0,0.9);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+    z-index:4;
+  }
+  .play-circle:hover { transform:translateX(-50%) scale(1.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+  .play-circle svg { fill:#fff; width:22px; height:22px; margin-left:3px; }
+
+  /* Right column - content */
+  .modal-body {
+    flex:1; padding:22px 24px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .modal-zone-id {
+    font-family:'IBM Plex Mono',monospace; font-size:9px;
+    color:var(--red); letter-spacing:1.2px; text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .modal-quote {
+    font-size:14px; color:var(--text-dark); line-height:1.7;
+    margin-bottom:20px; padding:14px 18px;
+    background:var(--bg-off);
+    border-left:3px solid var(--red);
+    border-radius:0 6px 6px 0;
+  }
+  .modal-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:14px;
+    color:var(--text-dark); text-transform:uppercase; letter-spacing:0.5px;
+    margin:0 0 6px;
+  }
+  .modal-desc { display:none; }
+
+  /* Delta grid */
+  .delta-grid { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  .delta-item {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:6px 10px; background:var(--bg-off); border-radius:5px;
+    border:1px solid var(--line-faint);
+  }
+  .delta-label { font-size:11px; color:var(--text-mid); flex:1; }
+  .delta-before {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500;
+    color:var(--text-light); min-width:64px; text-align:right;
+  }
+  .delta-after {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500;
+    color:var(--green); min-width:64px; text-align:right;
+  }
+  .delta-gap-pill {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:500;
+    background:var(--red-light); color:var(--red); padding:2px 8px;
+    border-radius:10px; min-width:52px; text-align:center; margin-left:8px;
+  }
+  .delta-header {
+    display:flex; justify-content:flex-end; gap:0; padding:0 12px 4px;
+  }
+  .delta-header span {
+    font-family:'IBM Plex Mono',monospace; font-size:9px;
+    letter-spacing:1px; text-transform:uppercase;
+  }
+
+  /* Product pills */
+  .product-pills { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:16px; }
+  .pill {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.2px;
+    padding:4px 9px; border-radius:4px;
+    background:var(--bg-off); border:1px solid var(--line-faint); color:var(--text-mid);
+  }
+
+  /* CTA */
+  .modal-cta {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 22px; background:var(--red); color:#fff; border:none;
+    border-radius:6px; font-family:'Barlow Condensed',sans-serif;
+    font-weight:600; font-size:14px; text-transform:uppercase;
+    letter-spacing:1.2px; cursor:pointer; text-decoration:none;
+    transition: background 0.2s;
+  }
+  .modal-cta:hover { background:#b00000; }
+  .modal-cta svg { width:14px; height:14px; fill:#fff; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo-mark">M</div>
+    <div>
+      <div class="header-title">Motion Industries: Amazon's Strategic MRO Partner Across North America</div>
+      <div class="header-sub">Fulfillment Center MRO Performance Map — Gen 7 Robotics-Enabled ARS Facility</div>
+    </div>
+  </div>
+  <div class="header-badge">Concept Prototype</div>
+</div>
+
+<div class="schematic-wrap">
+  <div class="schematic-label">▸ ARS Fulfillment Center — Top-Down Schematic — Click hotspots to explore zones</div>
+
+  <svg class="fc-svg" viewBox="0 0 1000 680" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- BACKGROUND GRID -->
+    <defs>
+      <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e4e8" stroke-width="0.3"/>
+      </pattern>
+      <pattern id="gridMajor" width="100" height="100" patternUnits="userSpaceOnUse">
+        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#cfd8dc" stroke-width="0.5"/>
+      </pattern>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <rect width="1000" height="680" fill="#fafbfc"/>
+    <rect width="1000" height="680" fill="url(#grid)"/>
+    <rect width="1000" height="680" fill="url(#gridMajor)"/>
+
+    <!-- OUTER BUILDING WALLS -->
+    <rect x="40" y="40" width="920" height="600" rx="3" fill="none" stroke="#78909c" stroke-width="2.5"/>
+
+    <!-- ZONE: INBOUND DOCKS (left wall) -->
+    <rect x="40" y="40" width="160" height="280" fill="rgba(176,190,197,0.06)" stroke="#90a4ae" stroke-width="1"/>
+    <!-- dock bays -->
+    <rect x="40" y="60" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="40" y="100" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="40" y="140" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="40" y="180" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="40" y="220" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="40" y="260" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <text x="120" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">INBOUND DOCKS</text>
+    <text x="120" y="170" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="13" fill="#546e7a">RECEIVE</text>
+    <text x="120" y="186" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae">Unbox / Scan</text>
+
+    <!-- ZONE: RETURNS / HAZMAT (bottom-left) -->
+    <rect x="40" y="320" width="160" height="140" fill="rgba(176,190,197,0.04)" stroke="#90a4ae" stroke-width="0.8" stroke-dasharray="4,3"/>
+    <text x="120" y="390" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="12" fill="#78909c">RETURNS</text>
+    <text x="120" y="404" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#b0bec5">Hazmat / Recond.</text>
+
+    <!-- ZONE: STOW / INDUCTION -->
+    <rect x="200" y="40" width="140" height="280" fill="rgba(213,0,0,0.02)" stroke="#90a4ae" stroke-width="1"/>
+    <text x="270" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">STOW / INDUCTION</text>
+    <text x="270" y="170" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="13" fill="#546e7a">STOW</text>
+    <text x="270" y="186" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae">Sequoia Induction</text>
+    <!-- stow stations -->
+    <rect x="218" y="80" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="218" y="108" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="218" y="136" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="218" y="210" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="218" y="238" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="294" y="80" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="294" y="108" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="294" y="136" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="294" y="210" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+    <rect x="294" y="238" width="28" height="18" rx="2" fill="none" stroke="#b0bec5" stroke-width="0.8"/>
+
+    <!-- ZONE: ROBOTIC STORAGE GRID (center - largest zone) -->
+    <rect x="340" y="40" width="320" height="360" fill="rgba(213,0,0,0.015)" stroke="#78909c" stroke-width="1.2"/>
+    <text x="500" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">ROBOTIC STORAGE GRID</text>
+    <!-- QR grid pattern -->
+    <g opacity="0.2">
+      <line x1="380" y1="70" x2="380" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="420" y1="70" x2="420" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="460" y1="70" x2="460" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="500" y1="70" x2="500" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="540" y1="70" x2="540" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="580" y1="70" x2="580" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="620" y1="70" x2="620" y2="380" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="110" x2="660" y2="110" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="150" x2="660" y2="150" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="190" x2="660" y2="190" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="230" x2="660" y2="230" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="270" x2="660" y2="270" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="310" x2="660" y2="310" stroke="#90a4ae" stroke-width="0.4"/>
+      <line x1="340" y1="350" x2="660" y2="350" stroke="#90a4ae" stroke-width="0.4"/>
+    </g>
+    <!-- Robot icons (small squares) -->
+    <rect x="395" y="125" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="455" y="205" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="525" y="145" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="575" y="285" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="430" y="325" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="600" y="175" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="370" y="265" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <rect x="545" y="345" width="8" height="8" rx="1" fill="#b0bec5" opacity="0.5"/>
+    <text x="500" y="215" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="15" fill="#78909c">HERCULES / TITAN</text>
+    <text x="500" y="232" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#b0bec5">QR-Coded Navigation Floor</text>
+    <text x="500" y="244" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#b0bec5">30M+ Items · Multi-Level Pods</text>
+
+    <!-- ZONE: PICK STATIONS (right of robotics grid) -->
+    <rect x="660" y="40" width="120" height="360" fill="rgba(176,190,197,0.05)" stroke="#90a4ae" stroke-width="1"/>
+    <text x="720" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">PICK STATIONS</text>
+    <!-- pick station desks -->
+    <g>
+      <rect x="678" y="80" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="110" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="140" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="170" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="250" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="280" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="310" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="678" y="340" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="80" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="110" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="140" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="170" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="250" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="280" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="310" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+      <rect x="730" y="340" width="32" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="0.8"/>
+    </g>
+    <text x="720" y="220" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="12" fill="#546e7a">PICK</text>
+    <text x="720" y="234" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#b0bec5">Vulcan / Sparrow</text>
+
+    <!-- ZONE: PACK / SLAM -->
+    <rect x="780" y="40" width="180" height="180" fill="rgba(176,190,197,0.05)" stroke="#90a4ae" stroke-width="1"/>
+    <text x="870" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">PACK / SLAM</text>
+    <text x="870" y="130" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="13" fill="#546e7a">PACK</text>
+    <text x="870" y="146" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae">Scan · Label · Manifest</text>
+    <!-- pack line tables -->
+    <rect x="800" y="80" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="800" y="98" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="800" y="160" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="800" y="178" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="870" y="80" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="870" y="98" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="870" y="160" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+    <rect x="870" y="178" width="50" height="10" rx="1" fill="none" stroke="#b0bec5" stroke-width="0.7"/>
+
+    <!-- ZONE: SORTATION / CONVEYANCE (bottom-center, wide) -->
+    <rect x="200" y="400" width="560" height="160" fill="rgba(213,0,0,0.015)" stroke="#78909c" stroke-width="1.2"/>
+    <text x="480" y="416" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">SORTATION / CONVEYANCE</text>
+    <text x="480" y="480" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="15" fill="#546e7a">HIGH-SPEED SORT</text>
+    <text x="480" y="496" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#b0bec5">Robin / Cardinal · Divert Lanes</text>
+
+    <!-- ZONE: OUTBOUND DOCKS (right wall / bottom-right) -->
+    <rect x="780" y="220" width="180" height="340" fill="rgba(176,190,197,0.04)" stroke="#90a4ae" stroke-width="1"/>
+    <text x="870" y="236" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae" letter-spacing="1.5">OUTBOUND DOCKS</text>
+    <!-- dock bays right -->
+    <rect x="948" y="260" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="300" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="340" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="380" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="420" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="460" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="500" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <rect x="948" y="540" width="12" height="30" fill="#b0bec5" rx="1"/>
+    <text x="870" y="420" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="13" fill="#546e7a">SHIP</text>
+    <text x="870" y="436" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#90a4ae">Lane → Truck</text>
+
+    <!-- ZONE: MAINTENANCE CRIB (bottom-left corner) -->
+    <rect x="40" y="460" width="160" height="180" fill="rgba(213,0,0,0.025)" stroke="#D50000" stroke-width="1" stroke-dasharray="6,3" rx="3"/>
+    <text x="120" y="476" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#D50000" letter-spacing="1.5">MRO CRIB</text>
+    <text x="120" y="545" text-anchor="middle" font-family="Barlow Condensed" font-weight="600" font-size="13" fill="#D50000">MAINTENANCE</text>
+    <text x="120" y="561" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#D50000" opacity="0.6">VMI · Storeroom · PdM</text>
+    <!-- shelving icons -->
+    <rect x="60" y="500" width="40" height="6" rx="1" fill="none" stroke="rgba(213,0,0,0.3)" stroke-width="0.7"/>
+    <rect x="60" y="510" width="40" height="6" rx="1" fill="none" stroke="rgba(213,0,0,0.3)" stroke-width="0.7"/>
+    <rect x="60" y="520" width="40" height="6" rx="1" fill="none" stroke="rgba(213,0,0,0.3)" stroke-width="0.7"/>
+    <rect x="140" y="500" width="40" height="6" rx="1" fill="none" stroke="rgba(213,0,0,0.3)" stroke-width="0.7"/>
+    <rect x="140" y="510" width="40" height="6" rx="1" fill="none" stroke="rgba(213,0,0,0.3)" stroke-width="0.7"/>
+    <rect x="140" y="520" width="40" height="6" rx="1" fill="none" stroke="rgba(213,0,0,0.3)" stroke-width="0.7"/>
+
+    <!-- ==================== CONVEYOR LINES ==================== -->
+    <g id="conveyors">
+      <!-- Inbound receive → Stow -->
+      <line x1="200" y1="160" x2="200" y2="160" stroke="var(--conveyor)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 170 160 L 220 160" stroke="#546e7a" stroke-width="3" stroke-linecap="round"/>
+      <!-- Stow → Robotics grid (multiple feeds) -->
+      <path d="M 340 100 L 340 100" stroke="#546e7a" stroke-width="2.5"/>
+      <line x1="330" y1="100" x2="350" y2="100" stroke="#546e7a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="330" y1="180" x2="350" y2="180" stroke="#546e7a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="330" y1="260" x2="350" y2="260" stroke="#546e7a" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Robotics → Pick stations -->
+      <line x1="650" y1="120" x2="680" y2="120" stroke="#546e7a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="650" y1="200" x2="680" y2="200" stroke="#546e7a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="650" y1="300" x2="680" y2="300" stroke="#546e7a" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Pick → Pack main trunk -->
+      <path d="M 760 200 C 770 200, 780 200, 790 140" stroke="#546e7a" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Pack → Sortation main trunk (big conveyor) -->
+      <path d="M 870 220 L 870 400" stroke="#D50000" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.3"/>
+      <path d="M 870 400 L 760 460" stroke="#D50000" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.2"/>
+      <!-- Sortation main belt (horizontal) -->
+      <line x1="240" y1="480" x2="740" y2="480" stroke="#D50000" stroke-width="4" stroke-linecap="round" opacity="0.25"/>
+      <!-- Sortation divert lanes - short stubs within zone, not crossing into outbound -->
+      <line x1="620" y1="480" x2="680" y2="450" stroke="#90a4ae" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <line x1="560" y1="480" x2="620" y2="455" stroke="#90a4ae" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <line x1="500" y1="480" x2="560" y2="460" stroke="#90a4ae" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <line x1="440" y1="480" x2="500" y2="500" stroke="#90a4ae" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <line x1="380" y1="480" x2="440" y2="505" stroke="#90a4ae" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+      <!-- Conveyor flow arrows -->
+      <text x="190" y="152" font-family="IBM Plex Mono" font-size="10" fill="#546e7a">→</text>
+      <text x="342" y="95" font-family="IBM Plex Mono" font-size="8" fill="#546e7a">→</text>
+      <text x="660" y="118" font-family="IBM Plex Mono" font-size="8" fill="#546e7a">→</text>
+      <text x="860" y="310" font-family="IBM Plex Mono" font-size="10" fill="rgba(213,0,0,0.4)">↓</text>
+      <text x="480" y="474" font-family="IBM Plex Mono" font-size="10" fill="rgba(213,0,0,0.35)">◄──────────────────────────►</text>
+    </g>
+
+    <!-- ==================== HOTSPOT PLAY BUTTONS ==================== -->
+
+    <!-- Play: Inbound Docks -->
+    <g class="hotspot-pin" onclick="openModal('inbound')">
+      <circle class="pin-bg" cx="120" cy="130" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="120" cy="130" r="14" fill="#D50000"/>
+      <polygon points="116,121 116,139 129,130" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Stow -->
+    <g class="hotspot-pin" onclick="openModal('stow')">
+      <circle class="pin-bg" cx="270" cy="130" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="270" cy="130" r="14" fill="#D50000"/>
+      <polygon points="266,121 266,139 279,130" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Robotic Grid -->
+    <g class="hotspot-pin" onclick="openModal('robotics')">
+      <circle class="pin-bg" cx="500" cy="280" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="500" cy="280" r="14" fill="#D50000"/>
+      <polygon points="496,271 496,289 509,280" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Pick Stations -->
+    <g class="hotspot-pin" onclick="openModal('pick')">
+      <circle class="pin-bg" cx="720" cy="200" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="720" cy="200" r="14" fill="#D50000"/>
+      <polygon points="716,191 716,209 729,200" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Pack / SLAM -->
+    <g class="hotspot-pin" onclick="openModal('pack')">
+      <circle class="pin-bg" cx="870" cy="130" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="870" cy="130" r="14" fill="#D50000"/>
+      <polygon points="866,121 866,139 879,130" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Sortation (on the main belt) -->
+    <g class="hotspot-pin" onclick="openModal('sortation')">
+      <circle class="pin-bg" cx="480" cy="480" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="480" cy="480" r="14" fill="#D50000"/>
+      <polygon points="476,471 476,489 489,480" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Outbound -->
+    <g class="hotspot-pin" onclick="openModal('outbound')">
+      <circle class="pin-bg" cx="920" cy="400" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="920" cy="400" r="14" fill="#D50000"/>
+      <polygon points="916,391 916,409 929,400" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Maintenance Crib -->
+    <g class="hotspot-pin" onclick="openModal('maintenance')">
+      <circle class="pin-bg" cx="120" cy="545" r="20" fill="#D50000"/>
+      <circle class="pin-circle" cx="120" cy="545" r="14" fill="#D50000"/>
+      <polygon points="116,536 116,554 129,545" fill="#fff" class="pin-play"/>
+    </g>
+
+    <!-- Play: Conveyor junction -->
+    <g class="hotspot-pin" onclick="openModal('conveyor_junction')">
+      <circle class="pin-bg" cx="640" cy="460" r="20" fill="#e65100"/>
+      <circle class="pin-circle" cx="640" cy="460" r="14" fill="#e65100"/>
+      <polygon points="636,451 636,469 649,460" fill="#fff" class="pin-play"/>
+    </g>
+
+  </svg>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div class="modal-layout">
+      <!-- LEFT: Video + Person -->
+      <div class="modal-left">
+        <div class="modal-video" id="modalVideo">
+          <!-- Person photo -->
+          <img class="webcam-person" id="webcamImg" src="" alt=""/>
+          
+          <!-- Duration badge -->
+          <div class="webcam-time" id="webcamTime">02:34</div>
+          <!-- Play button - positioned low, not over face -->
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <!-- Name bar with Amazon logo + LinkedIn -->
+          <div class="webcam-name-bar">
+            <div>
+              <div class="webcam-name-row">
+                <div class="webcam-name" id="webcamName">—</div>
+                <svg width="55" height="17" viewBox="0 0 160 50" style="flex-shrink:0;margin-top:2px;">
+                  <text x="0" y="30" font-family="Arial" font-weight="700" font-size="32" fill="#fff" letter-spacing="-0.5">amazon</text>
+                  <path d="M78.7 40.6c-7 5.1-17.1 8-25.9 8-12.3 0-23.3-4.5-31.6-12-.7-.6-.1-1.4.7-.9 9 5.2 20.1 8.3 31.6 8.3 7.8 0 16.3-1.6 24.1-4.9 1.2-.5 2.1.8 1.1 1.5z" fill="#FF9900"/>
+                  <path d="M81.2 37.6c-.9-1.2-6-.6-8.3-.3-.7.1-.8-.5-.2-.9 4.1-2.8 10.7-2 11.4-1.1.8 1-.2 7.9-4 11.2-.6.5-1.1.2-.9-.4.8-2 2.8-6.6 2-8.5z" fill="#FF9900"/>
+                </svg>
+              </div>
+              <div class="webcam-role" id="webcamRole">—</div>
+            </div>
+            <div class="webcam-bottom-row">
+              <a href="#" id="linkedinBtn" target="_blank" class="linkedin-btn" onclick="event.stopPropagation()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <span>Connect</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Quote + Results + CTA -->
+      <div class="modal-body">
+        <div class="modal-zone-id" id="modalZoneId">—</div>
+        <div class="modal-quote" id="modalQuote">—</div>
+
+        <div class="modal-title" id="modalTitle">Results</div>
+        <div class="delta-header">
+          <span style="color:var(--text-light); min-width:56px; text-align:right;">Before</span>
+          <span style="color:var(--green); min-width:56px; text-align:right;">After</span>
+          <span style="color:var(--red); min-width:48px; text-align:center; margin-left:6px;">Impact</span>
+        </div>
+        <div class="delta-grid" id="modalDeltas"></div>
+
+        <a href="#" class="modal-cta" id="modalCta">
+          Read the Full Case Study
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="white" stroke-width="2" fill="none"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const zones = {
+  inbound: {
+    zoneId: "Zone A · Inbound Dock / Receiving",
+    personName: "Marcus Chen",
+    personRole: "Maintenance Lead · Amazon FC — ONT8, San Bernardino CA",
+    personImg: "https://images.unsplash.com/photo-1615109398623-88346a601842?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "02:34",
+    quote: "We were running through dock leveler hydraulic seals every six weeks and scrambling for emergency parts. Motion consolidated our MRO supply for the entire inbound dock — one call, one vendor, next-day on everything. Our unplanned downtime dropped by almost two-thirds in the first quarter.",
+    deltas: [
+      { m:"Unplanned dock downtime / mo", b:"5.8 hrs", a:"2.1 hrs", g:"-64%" },
+      { m:"Emergency parts orders", b:"31%", a:"8%", g:"-74%" },
+    ],
+    products: ["Dock Leveler Hydraulics","Powered Roller Bearings","Dock Seals","Safety Bollards","Hose Assemblies"],
+    cta: "#case-study-inbound"
+  },
+  stow: {
+    zoneId: "Zone C · Stow / Sequoia Induction",
+    personName: "David Morales",
+    personRole: "Reliability Technician · Amazon FC — SNA4, Irvine CA",
+    personImg: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "03:12",
+    quote: "Our induction stations were jamming four, five times a week — always the same conveyor bearings failing. Motion's reliability engineer came in, spec'd a upgraded sealed bearing for the wet environment, and our jam rate dropped to about once a week. That one change gave us 20% more throughput at stow.",
+    deltas: [
+      { m:"Stow station uptime", b:"89.4%", a:"97.1%", g:"+8.6pt" },
+      { m:"Conveyor jam frequency", b:"4.7/wk", a:"1.2/wk", g:"-74%" },
+    ],
+    products: ["Conveyor Bearings","Belt Tensioners","Proximity Sensors","Drive Motors","Gearboxes","Conveyor Rollers"],
+    cta: "#case-study-stow"
+  },
+  robotics: {
+    zoneId: "Zone D · Robotic Storage Grid",
+    personName: "Sarah Okafor",
+    personRole: "Operations Manager · Amazon FC — LAX9, Littlerock CA",
+    personImg: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "04:47",
+    quote: "The robotics floor is the heartbeat of our FC, and when a drive unit goes down, the whole zone feels it. Motion set us up with a predictive maintenance program — vibration monitoring on the Hercules units, scheduled bearing replacements before failure. We saved over $800K in year one just from avoided emergency repairs and lost throughput.",
+    deltas: [
+      { m:"Drive unit downtime / mo", b:"3.2%", a:"0.8%", g:"-75%" },
+      { m:"QR floor maintenance cost", b:"$41K/yr", a:"$12K/yr", g:"-71%" },
+    ],
+    products: ["Precision Bearings","Drive Belts","Servo Motors","Encoders","Floor Coatings","Charging Parts","Lubrication Systems"],
+    cta: "#case-study-robotics"
+  },
+  pick: {
+    zoneId: "Zone E · Pick Stations",
+    personName: "James Whitfield",
+    personRole: "Mechatronics Tech · Amazon FC — SJC7, San Jose CA",
+    personImg: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "02:58",
+    quote: "The Vulcan and Sparrow arms were going down for maintenance way too often — we were losing pick throughput every time. Motion worked with us on a PM schedule specifically for the robotic arm joints and grippers. Our arm uptime went from 94% to over 98%, and the pickers noticed immediately because the pods were showing up faster.",
+    deltas: [
+      { m:"Pick throughput (units/hr)", b:"362", a:"412", g:"+14%" },
+      { m:"Robotic arm uptime", b:"94.1%", a:"98.6%", g:"+4.8pt" },
+    ],
+    products: ["Linear Bearings","Pneumatic Grippers","Sensors & Vision","Robotic Arm Components","Anti-Fatigue Matting"],
+    cta: "#case-study-pick"
+  },
+  pack: {
+    zoneId: "Zone F · Pack / SLAM",
+    personName: "Angela Reeves",
+    personRole: "Pack Line Supervisor · Amazon FC — LGB3, Eastvale CA",
+    personImg: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "01:52",
+    quote: "Our pack lines were the bottleneck — the automated packaging machines would go down and we'd be waiting days for timing belts and applicator parts from three different vendors. Motion got us on a single-source program with critical spares in the crib. Belt changes went from a crisis to a scheduled 20-minute swap.",
+    deltas: [
+      { m:"Pack line uptime", b:"91.3%", a:"96.8%", g:"+6pt" },
+      { m:"SLAM accuracy", b:"99.88%", a:"99.97%", g:"+0.09%" },
+    ],
+    products: ["Timing Belts","Taping Heads","Label Applicators","Print & Apply Parts","Packaging Machine Bearings"],
+    cta: "#case-study-pack"
+  },
+  sortation: {
+    zoneId: "Zone G · Sortation / Conveyance",
+    personName: "Robert Tanaka",
+    personRole: "Maintenance Manager · Amazon FC — ONT6, Moreno Valley CA",
+    personImg: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "03:41",
+    quote: "Sortation conveyors are the single most expensive MRO line item in our FC. We were replacing belts every nine months and dealing with six-plus unplanned stops a week. Motion re-spec'd our belting, put us on a tracking and tensioning program, and our belt life doubled. The cost savings were over a million dollars annually — it wasn't even close.",
+    deltas: [
+      { m:"Sort rate (pkgs/hr)", b:"6,900", a:"8,400", g:"+22%" },
+      { m:"Conveyor belt life", b:"9 mo", a:"18 mo", g:"+100%" },
+    ],
+    products: ["Conveyor Belting","Pillow Block Bearings","Motorized Rollers","Drive Chains","Divert Mechanisms","Belt Tracking Systems"],
+    cta: "#case-study-sortation"
+  },
+  outbound: {
+    zoneId: "Zone H · Outbound Docks",
+    personName: "Kevin Brooks",
+    personRole: "Dock Operations Lead · Amazon FC — LGB7, Rialto CA",
+    personImg: "https://images.unsplash.com/photo-1615109398623-88346a601842?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "01:28",
+    quote: "Outbound is where everything has to come together on time. Motion keeps our dock levelers and vehicle restraints maintained on a schedule — we basically never think about it anymore. It just works. That's what you want when you're loading 200 trailers a day.",
+    deltas: [
+      { m:"Load time per trailer", b:"42 min", a:"38 min", g:"-10%" },
+      { m:"Dock equipment uptime", b:"97.1%", a:"98.8%", g:"+1.8pt" },
+    ],
+    products: ["Dock Levelers","Dock Seals","Vehicle Restraints","Impact Barriers","Loading Conveyor Belts"],
+    cta: "#case-study-outbound"
+  },
+  maintenance: {
+    zoneId: "Zone M · Maintenance / MRO Crib",
+    personName: "Patricia Hawkins",
+    personRole: "Maintenance Director · Amazon FC — ONT8, San Bernardino CA",
+    personImg: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "05:16",
+    quote: "When I got here, 62% of our maintenance was reactive — we were firefighting every shift. Motion came in with their VMI program, reorganized the storeroom, consolidated us from fourteen suppliers down to three, and put us on a predictive maintenance cadence. Eighteen months later we're at 28% reactive. My team actually has time to do planned work now instead of chasing emergencies.",
+    deltas: [
+      { m:"Reactive maintenance %", b:"62%", a:"28%", g:"-55%" },
+      { m:"MRO inventory turns", b:"2.8x", a:"6.2x", g:"+121%" },
+    ],
+    products: ["VMI Program","Storeroom Mgmt","Predictive Maintenance","Asset Tracking","Consolidated Supply"],
+    cta: "#case-study-maintenance"
+  },
+  conveyor_junction: {
+    zoneId: "Conveyor Segment · Sort-to-Ship Junction",
+    personName: "Tony Vasquez",
+    personRole: "RME Technician III · Amazon FC — SNA4, Irvine CA",
+    personImg: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=710&fit=crop&crop=faces&facepad=3",
+    linkedin: "https://linkedin.com/in/",
+    vidTime: "02:09",
+    quote: "This 40-foot section of conveyor where the sort lanes divert to outbound — it sees three times the duty cycle of any other segment in the building. We were burning through divert actuators and tracking rollers constantly. Motion spec'd heavy-duty replacements and put us on a 90-day inspection cycle. Actuator failures went from 18 a year down to 3. This one segment was costing us $138K a year and now it's under $45K.",
+    deltas: [
+      { m:"Belt replacement frequency", b:"8 mo", a:"22 mo", g:"+175%" },
+      { m:"Divert actuator failures/yr", b:"18", a:"3", g:"-83%" },
+    ],
+    products: ["High-Speed Belting","Divert Actuators","Tracking Rollers","Bearing Units","Speed Sensors","Conveyor Lubrication"],
+    cta: "#case-study-conveyor"
+  }
+};
+
+function openModal(zoneId) {
+  const z = zones[zoneId];
+  if(!z) return;
+  document.getElementById('webcamImg').src = z.personImg;
+  document.getElementById('webcamName').textContent = z.personName;
+  document.getElementById('webcamRole').textContent = z.personRole;
+  document.getElementById('webcamTime').textContent = z.vidTime;
+  document.getElementById('linkedinBtn').href = z.linkedin;
+  document.getElementById('modalZoneId').textContent = z.zoneId;
+  document.getElementById('modalQuote').innerHTML = '\u201C' + z.quote + '\u201D';
+  document.getElementById('modalDeltas').innerHTML = z.deltas.map(d =>
+    `<div class="delta-item">
+      <div class="delta-label">${d.m}</div>
+      <div class="delta-before">${d.b}</div>
+      <div class="delta-after">${d.a}</div>
+      <div class="delta-gap-pill">${d.g}</div>
+    </div>`
+  ).join('');
+  document.getElementById('modalCta').href = z.cta;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function closeModal(e) {
+  if(!e || e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('active');
+  }
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+
+</body>
+</html>
