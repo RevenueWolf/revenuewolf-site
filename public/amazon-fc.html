@@ -8,6 +8,49 @@
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap');
 
   :root {
+    /* Password gate */
+    --gate-bg: #fff;
+  }
+  .password-gate {
+    position:fixed; inset:0; z-index:9999; background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:16px;
+  }
+  .password-gate.hidden { display:none; }
+  .gate-logo {
+    width:44px; height:44px; background:#D50000; border-radius:7px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:22px; color:#fff;
+    margin-bottom:8px;
+  }
+  .gate-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:22px;
+    color:#1a1a1a; text-transform:uppercase; letter-spacing:1px;
+  }
+  .gate-sub {
+    font-family:'Outfit',sans-serif; font-size:13px; color:#90a4ae; margin-top:-8px;
+  }
+  .gate-input {
+    font-family:'Outfit',sans-serif; font-size:14px; padding:10px 16px;
+    border:1px solid #cfd8dc; border-radius:6px; width:260px; text-align:center;
+    outline:none; transition: border-color 0.2s;
+  }
+  .gate-input:focus { border-color:#D50000; }
+  .gate-input.error { border-color:#D50000; animation: shake 0.3s; }
+  @keyframes shake {
+    0%,100% { transform:translateX(0); }
+    25% { transform:translateX(-6px); }
+    75% { transform:translateX(6px); }
+  }
+  .gate-btn {
+    font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:14px;
+    text-transform:uppercase; letter-spacing:1.2px;
+    padding:10px 32px; background:#D50000; color:#fff; border:none;
+    border-radius:6px; cursor:pointer; transition: background 0.2s;
+  }
+  .gate-btn:hover { background:#b00000; }
+
+  :root {
     --red: #D50000;
     --red-light: rgba(213,0,0,0.08);
     --red-mid: rgba(213,0,0,0.15);
@@ -252,6 +295,29 @@
 </style>
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div class="password-gate" id="passwordGate">
+  <div class="gate-logo">M</div>
+  <div class="gate-title">RevenueWolf — Private Demo</div>
+  <div class="gate-sub">Enter access code to continue</div>
+  <input type="password" class="gate-input" id="gateInput" placeholder="Access Code" onkeydown="if(event.key==='Enter')checkPass()"/>
+  <button class="gate-btn" onclick="checkPass()">Enter</button>
+</div>
+
+<script>
+function checkPass() {
+  const input = document.getElementById('gateInput');
+  if (input.value === 'HellmuthSucks!') {
+    document.getElementById('passwordGate').classList.add('hidden');
+  } else {
+    input.classList.add('error');
+    input.value = '';
+    input.placeholder = 'Try again';
+    setTimeout(() => input.classList.remove('error'), 400);
+  }
+}
+</script>
 
 <div class="header">
   <div class="header-left">
