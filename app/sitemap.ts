@@ -16,6 +16,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://revenuewolf.com/field-notes",
       lastModified: new Date(),
     },
+    {
+      url: "https://revenuewolf.com/privacy",
+      lastModified: new Date(),
+    },
     ...postUrls,
   ];
 }

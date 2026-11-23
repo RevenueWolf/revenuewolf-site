@@ -409,7 +409,13 @@ export default function Home() {
             <span className="font-body text-sm text-gray-600">LLC</span>
           </div>
 
-          <p className="font-body text-sm text-gray-600">Birmingham, Alabama</p>
+          <p className="font-body text-sm text-gray-600">
+            Birmingham, Alabama
+            <span className="mx-2" aria-hidden="true">&middot;</span>
+            <a href="/privacy" className="transition-colors hover:text-red">
+              Privacy Policy
+            </a>
+          </p>
 
           <div className="flex items-center gap-4">
             {/* LinkedIn */}
